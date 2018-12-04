@@ -10,10 +10,50 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_04_135937) do
+ActiveRecord::Schema.define(version: 2018_12_04_174419) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "instruments", force: :cascade do |t|
+    t.string "name"
+    t.string "category"
+    t.string "icon_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "jamms", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.string "location"
+    t.date "date"
+    t.time "duration"
+    t.integer "capacity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "participations", force: :cascade do |t|
+    t.string "creator"
+    t.string "status"
+    t.bigint "jamm_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["jamm_id"], name: "index_participations_on_jamm_id"
+    t.index ["user_id"], name: "index_participations_on_user_id"
+  end
+
+  create_table "skills", force: :cascade do |t|
+    t.integer "level"
+    t.bigint "user_id"
+    t.bigint "instrument_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["instrument_id"], name: "index_skills_on_instrument_id"
+    t.index ["user_id"], name: "index_skills_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,4 +67,8 @@ ActiveRecord::Schema.define(version: 2018_12_04_135937) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "participations", "jamms"
+  add_foreign_key "participations", "users"
+  add_foreign_key "skills", "instruments"
+  add_foreign_key "skills", "users"
 end
