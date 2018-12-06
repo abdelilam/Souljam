@@ -18,21 +18,21 @@ titles = ["Trial Jamm in my new apartment!", "Wonderful Jamm", "Jamm with friend
 descriptions = ["Wanted to get a few friends together to jamm after work", "Ive got a passion for Jazz and Blues and really wanted to get a few people together to go on a 7 hour bender", "I was tired of trying to organise something in a studio nearby, found this app and decided to start a jamm in my living room, anyone welcome", "Into metal and dont have all the equipment but have a drum set so people are welcome to come along with their own instruments", "I have a small little apartment and really have been meaning to bring people over for a while to jamm", "Finally have a few hours to spare, just lost my job and have a free house most of the time so really have been meaning to get a few people together", "Ive got a really nice piano at home, please bring some guitars and we can have a nice sesh", "Its abit late but hope you guys can make it at 9, I have a cool living room with alot of space", "I have tried and tried to organise jamms in studios but its impossible to organise", "My drum set is awesome, please bring some other instruments", "Hellooooooo Guyyyyysssss!!!!!! Please bring whatever instrument you want and come join me a my friends for an awesome jamm"]
 levels = ["Beginner", "Intermediate", "Expert"]
 
-instrument_categories = ["String", "Guitar", "Woodwind", "Brass", "Percussion", "Keybords", "other"]
+instrument_categories = ["String", "Guitar", "Woodwind", "Brass", "Percussion", "Keybords"]
 
 instruments = {
-  string: ["Violin", "Viola", "Cello" "Double bass"],
-  guitar: ["Bass", "Classic", "Folk", "Flamenca", "Electric"],
-  Woodwind: ["Piccolo", "Flute", "Oboe", "English Horn", "Clarinet"],
-  Brass: ["Trumpet", "Trombone", "Tuba", "French Horn"],
-  Percussion: ["Drum", "Cymbals", "Guiro", "Timpani", "Triangle"],
-  Keybord: ["Piano", "Harpsichord", "Organ"]
+  "String" => ["Violin", "Viola", "Cello" "Double bass"],
+  "Guitar" => ["Bass", "Classic", "Folk", "Flamenca", "Electric"],
+  "Woodwind" => ["Piccolo", "Flute", "Oboe", "English Horn", "Clarinet"],
+  "Brass" => ["Trumpet", "Trombone", "Tuba", "French Horn"],
+  "Percussion" => ["Drum", "Cymbals", "Guiro", "Timpani", "Triangle"],
+  "Keybords" => ["Piano", "Harpsichord", "Organ"]
 }
 
 insts = []
 instruments.each_key do |category|
   instruments[category].each do |instrument|
-    inst = Instrument.create(
+    inst = Instrument.create!(
       name: instrument,
       category: category
     )
