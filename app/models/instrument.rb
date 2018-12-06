@@ -4,6 +4,7 @@ class Instrument < ApplicationRecord
    has_many :participations
    has_many :skills
 
+
   validates :name, presence: :true
   validates :category, inclusion: {
     in: CATEGORIES }
