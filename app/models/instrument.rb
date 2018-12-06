@@ -1,12 +1,12 @@
 class Instrument < ApplicationRecord
-   belongs_to :user
+  CATEGORIES = ["String", "Guitar", "Woodwind", "Brass", "Percussion", "Keybords"]
+   has_many :users, through: :skills
    has_many :participations
-
+   has_many :skills
 
 
   validates :name, presence: :true
   validates :category, inclusion: {
-    in: %w("Bass Guitar", "Drum Set", "Classic guitar", "Flute", "Harp", "Maracas", "Piano", "Saxophone",
-          "Triangle", "Trumpet","Violen", "Electric guitar") }
+    in: CATEGORIES }
 
 end

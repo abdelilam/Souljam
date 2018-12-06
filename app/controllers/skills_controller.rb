@@ -5,34 +5,54 @@ class SkillsController < ApplicationController
   def new
     @skill = Skill.new
     authorize @skill
-    @user = User.find(params[:id])
+    @instruments = Instrument.all
   end
 
   def create
-    @instrument = Instrument.find(params[:id])
     @skill = Skill.new(skill_params)
     @skill.user = current_user
     authorize @skill
+    @instruments = Instrument.all
     if @skill.save
-      redirect_to dashboard_path(@user)
+      redirect_to dashboard_path
     else
       render :new
     end
   end
 
   def show
+    @skill = Skill.find(params[:id])
+
   end
 
   def edit
+    @skill = Skill.find(params[:id])
+    authorize @skill
+    @instruments = Instrument.all
   end
 
+
   def update
+    @skill = Skill.find(params[:id])
+    @instruments = Instrument.all
+    authorize @skill
+
+    if @skill.update(skill_params)
+      redirect_to dashboard_path
+    else
+      render :edit
+    end
   end
 
   def destroy
+    @skill = Skill.find(params[:id])
+    @skill.destroy
+    authorize @skill
+    flash[:notice] = "#{@skill.instrument.name} is successfuly deleted"
+    redirect_to dashboard_path
   end
 
-  def instrument_params
-    params.require(:skill).permit(:level, instruments_attributes: [:name, :category, :icon_url])
+  def skill_params
+    params.require(:skill).permit(:level, :instrument_id)
   end
 end

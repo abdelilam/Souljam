@@ -1,0 +1,15 @@
+<%= link_to "New Instrument", new_skill_path %>
+
+<ul class = "list-inline">
+<% @skills.each do |skill| %>
+  <li><p><%= skill.instrument.category %></p></li>
+  <li><p><%= skill.instrument.name %></p></li>
+  <li><p><%= skill.level %></p></li>
+  <li><%= link_to "Edit Skill", edit_skill_path(skill), class: "btn btn-primary" %></li>
+  <li>
+    <%= link_to skill_path(skill), method: :delete, data: { confirm: "Are your sure you want to delete this instrument #{skill.level}"} do %>
+        <p><i class= "far fa-trash-alt"></i> Cancel Instrument</p>
+    <% end %>
+  </li>
+<% end %>
+</ul>
