@@ -1,0 +1,9 @@
+<%= simple_form_for skill do |f| %>
+    # <%= f.input :instrument_id, collection: instruments, label_method: :name, value_method: :id, include_blank: false %>
+    <div class="skills">
+      <p id="skill_level"> ## Skill Level ## </p>
+      <%= f.input :level, collection: ["Beginner", "Intermediate", "Expert"] %>
+    </div>
+    <div id="f2submit"><%= f.submit "Submit" %><div>
+<% end %>
+

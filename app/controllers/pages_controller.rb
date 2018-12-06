@@ -3,4 +3,8 @@ class PagesController < ApplicationController
 
   def home
   end
+
+  def dashboard
+    @skills = Skill.where(user: current_user)
+  end
 end

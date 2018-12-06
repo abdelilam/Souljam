@@ -1,4 +1,4 @@
-class ParticipantsController < ApplicationController
+class ParticipationsController < ApplicationController
   before_action :find_jam, only: [:new, :create, :update, :edit, :destroy]
   before_action :participant, only: [:update, :destroy]
   before_action :current_participant, only: [:create, :update, :destroy]
@@ -12,7 +12,7 @@ class ParticipantsController < ApplicationController
 
   def create
     if @jamm.user == current_user
-      @participation = Participation.new(jamm_id: @jamm.id, user: nil, instrument_id: params[:participant][:instrument_id])
+      @participant = Participation.new(jamm_id: @jamm.id, user: nil, instrument_id: params[:participant][:instrument_id])
     else
       @participant = Participation.new(jamm_id: @jamm.id, user: current_user, instrument_id: params[:participation][:instrument_id])
   end
