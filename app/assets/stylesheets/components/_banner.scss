@@ -1,7 +1,7 @@
 .banner {
   height: 100vh;
   display: flex;
-  justify-content: flex-end; //flexend
+  justify-content: flex-end;
   align-items: center;
   background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), image-url("background-home.jpg");
   background-size: cover;
@@ -15,7 +15,7 @@
     font-size: 30px;
     font-weight: lighter;
     margin-bottom: 30px;
-    margin-right: 5px;
+    margin-right: 40px;
   }
   .btn {
     padding: 15px 50px;
