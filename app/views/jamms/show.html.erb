@@ -1,15 +1,45 @@
-<h1>Jamms#show</h1>
-<p><%= @jamm.title %></p>
-<p><%= @jamm.description %></p>
-<p><%= @jamm.location %></p>
-<p><%= @jamm.date %></p>
-<p><%= @jamm.capacity %></p>
-<p><%= @jamm.duration %></p>
-<p><%= User.find(@jamm.creator_id).email %></p>
-<% if policy(@jamm).edit? %>
-  <%= link_to "Edit", edit_jamm_path(@jamm) %>
-<% end %>
-<% if policy(@jamm).destroy? %>
-  <%= link_to "Delete", jamm_path(@jamm), method: :delete,
-      data: { confirm: "Are you sure?" } %>
-<% end %>
+<div class="card">
+  <div class="card-image-top" style="background: url('https://source.unsplash.com/collection/3471774') no-repeat center center; height: 200px;">
+  </div>
+</div>
+    <div class="card-header">
+      <h3><%= @jamm.title %></h3>
+    </div>
+    <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <%= @jamm.description %></li>
+             <li class="list-group-item">
+              <%= @jamm.location %></li>
+              <li class="list-group-item"><i class="fas fa-calendar-alt"></i><%= @jamm.date %></li>
+              <li class="list-group-item"><i class="fas fa-users"></i><%= @jamm.capacity %></li>
+              <li class="list-group-item"><i class="fas fa-clock"></i><%= @jamm.duration %></li>
+              <li class="list-group-item">
+                <%= User.find(@jamm.creator_id).email %></li>
+                <% if policy(@jamm).edit? %>
+            <li class="list-group-item">
+              <%= link_to "Edit", edit_jamm_path(@jamm) %>
+            <% end %>
+          <% if policy(@jamm).destroy? %>
+            <%= link_to "Delete", jamm_path(@jamm), method: :delete,
+                data: { confirm: "Are you sure?" } %><% end %></li>
+      </ul>
+    </div>
+  </div>
+
+<div class="container container-sticky-right">
+  <div class="hover">
+    <span>Jam Toolbar</span>
+    <a class="jam-options-link" href="/" target="_self">
+      <i class="fas fa-home"></i></a>
+    <a class="jam-options-link" href="/dashboard" target="_self">
+      <i class="fas fa-user"></i></a>
+    <a class="jam-options-link" href="" target="_self">
+      <i class="fas fa-search"></i>
+    </a>
+    <%= link_to destroy_user_session_path, method: :delete, class: "jam-options-link",target:"_self",rel:"nofollow" do %>
+        <i class="fas fa-sign-out-alt"></i>
+        <% t(".sign_out", default: "Log out") %>
+    <% end %>
+  </div>
+</div>
+

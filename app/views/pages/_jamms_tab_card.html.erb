@@ -1,0 +1,30 @@
+<div class="card">
+  <div class="card-image-top" style="background: url('https://source.unsplash.com/collection/3471774') no-repeat center center; height: 200px;">
+  </div>
+    <div class="card-header">
+      <p><%= jamm.title %></p>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+            <%= jamm.description.truncate(27) %>
+              <%= link_to "See more", jamm_path(jamm) %>
+            </li>
+            <li class="list-group-item">
+            <%= jamm.location.truncate(20) %>
+            <%= link_to "See more", jamm_path(jamm) %></li>
+            <li class="list-group-item">
+            <i class="fas fa-calendar-alt"></i><%= jamm.date %>
+            <i class="fas fa-users"></i><%= jamm.capacity %>
+            <i class="fas fa-clock"></i><%= jamm.duration %></li>
+            <li class="list-group-item">
+            <%= User.find(jamm.creator_id).email %></li>
+            <% if policy(jamm).edit? %>
+            <li class="list-group-item">
+              <%= link_to "Edit", edit_jamm_path(jamm) %>
+            <% end %>
+          <% if policy(jamm).destroy? %>
+            <%= link_to "Delete", jamm_path(jamm), method: :delete,
+                data: { confirm: "Are you sure?" } %><% end %></li>
+      </ul>
+</div>
+
