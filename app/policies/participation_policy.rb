@@ -14,11 +14,11 @@ class ParticipationPolicy < ApplicationPolicy
   end
 
   def edit?
-    is_user?
+    false
   end
 
   def update?
-    is_user?
+    false
   end
 
   def destroy?

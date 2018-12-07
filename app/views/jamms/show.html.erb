@@ -1,9 +1,17 @@
+<div style= "color: black;">
+
 <h1>Jamms#show</h1>
+<h2>Title:</h2>
 <p><%= @jamm.title %></p>
+<h2>Description:</h2>
 <p><%= @jamm.description %></p>
+<h2>Location:</h2>
 <p><%= @jamm.location %></p>
+<h2>Date:</h2>
 <p><%= @jamm.date %></p>
+<h2>Capacity:</h2>
 <p><%= @jamm.capacity %></p>
+<h2>Duration:</h2>
 <p><%= @jamm.duration %></p>
 <p><%= User.find(@jamm.creator_id).email %></p>
 <% if policy(@jamm).edit? %>
@@ -13,3 +21,13 @@
   <%= link_to "Delete", jamm_path(@jamm), method: :delete,
       data: { confirm: "Are you sure?" } %>
 <% end %>
+<%= link_to "Join",  new_jamm_participation_path(@jamm), class: 'btn btn-primary' %>
+
+<hr>
+<% @jamm.participations.each do |participation| %>
+  <%= render 'jamms/participation', participation: participation %>
+<% end %>
+<hr>
+</div>
+
+

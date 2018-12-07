@@ -128,15 +128,15 @@ end
 # i = 1
 
 # Jamm.all.each do |jam|
-#   num = rand(1..jam.capacity)
+#   num = rand(1..20)
 #   num.times do
-#     user_id = User.all.sample.id
-#     if Instrument.where(user_id: user_id).empty?
-#      instrument_participant_id = Instrument.all.sample.id
-#     else
-#       instrument_participant_id = Instrument.where(user_id: user_id).sample.id
-#     end
-#     new_participation = Participation.create!(jamm_id: jam.id, user_id: user_id, instrument_id: instrument_participant_id, creator: user.first_id, status:["Pending", "Active", "Inactive"].sample)
+#     # user_id = User.all.sample.id
+#     # if Instrument.where(user_id: user_id).empty?
+#     #  instrument_participant_id = Instrument.all.sample.id
+#     # else
+#     #   instrument_participant_id = Instrument.where(user_id: user_id).sample.id
+#     # end
+#     new_participation = Participation.create!(jamm_id: jam.id, user_id: user_id, instrument_id: participation.instrument_id, status:["Pending", "Active"].sample)
 #   end
 #   puts "Jamm participant ##{counter} has joint the group!"
 #   puts "\n"
