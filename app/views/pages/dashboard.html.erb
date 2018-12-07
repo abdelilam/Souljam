@@ -1,15 +1,42 @@
-<%= link_to "New Instrument", new_skill_path %>
 
-<ul class = "list-inline">
-<% @skills.each do |skill| %>
-  <li><p><%= skill.instrument.category %></p></li>
-  <li><p><%= skill.instrument.name %></p></li>
-  <li><p><%= skill.level %></p></li>
-  <li><%= link_to "Edit Skill", edit_skill_path(skill), class: "btn btn-primary" %></li>
-  <li>
-    <%= link_to skill_path(skill), method: :delete, data: { confirm: "Are your sure you want to delete this instrument #{skill.level}"} do %>
-        <p><i class= "far fa-trash-alt"></i> Cancel Instrument</p>
-    <% end %>
-  </li>
-<% end %>
-</ul>
+<div class="tab">
+  <button class="tablinks" onclick="javascript:document.openJamtab(event, 'Instruments')" id="defaultOpen">All Instruments</button>
+  <button class="tablinks" onclick="javascript:document.openJamtab(event, 'Sessions')">All Jams</button>
+  <button class="tablinks" onclick="javascript:document.openJamtab(event, 'Profile')">Profile</button>
+</div>
+
+<div id="Instruments" class="tabcontent">
+  <div class="container-fluid">
+    <div class="row">
+      <h3 class="h3-tab-content-title">All Instruments</h3>
+
+      <% @skills.each do |skill| %>
+        <div class="col-xs-12 col-sm-4">
+          <%= render "pages/instruments_tab_card", skill: skill %>
+        </div>
+      <% end %>
+
+
+<div id="Sessions" class="tabcontent">
+  <h3>All Jams</h3>
+  <p>Show all goes here</p>
+</div>
+
+<div id="Profile" class="tabcontent">
+  <h3>Profile</h3>
+  <p>Once built profile page here</p>
+</div>
+
+<div class="container container-sticky-right">
+  <div class="hover">
+    <span>Jam Toolbar</span>
+    <a class="jam-options-link" href="/" target="_self">
+      <i class="fas fa-home"></i></a>
+    <a class="jam-options-link" href="/dashboard" target="_self">
+      <i class="fas fa-user"></i></a>
+    <a class="jam-options-link" href="" target="_self">
+      <i class="fas fa-search"></i></a>
+    <a class="jam-options-link" href="/users/sign_out" target="_self">
+      <i class="fas fa-sign-out-alt"></i></a>
+  </div>
+</div>

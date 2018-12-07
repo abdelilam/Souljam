@@ -1,0 +1,25 @@
+.card {
+  box-shadow: 0 20px 40px -14px rgba(0,0,0,0.25);
+}
+.card-img-top {
+  width: 18rem;
+  height: 188px;
+}
+.card-header {
+  padding-bottom: 5px;
+  padding-top: 5px;
+  background-color: #E5E5E5;
+  padding-left: 5px;
+  color: black;
+  font-weight: bolder;
+}
+.list-group-item {
+  color: black;
+}
+.h3-tab-content-title {
+  color: black;
+  margin-bottom: 30px;
+}
+.list-group-item:last-child {
+  margin-bottom: 80px;
+}
