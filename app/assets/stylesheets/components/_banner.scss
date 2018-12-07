@@ -23,4 +23,11 @@
     border-radius: 40px;
   }
 }
-
+.banner2 {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: image-url("background-new-jam.jpg");
+  background-size: cover;
+}
