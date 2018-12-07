@@ -19,4 +19,9 @@ document.openJamtab = function openJamtab(evt, jamName) {
     document.getElementById(jamName).style.display = "block";
     evt.currentTarget.className += " active";
 }
-document.getElementById("defaultOpen").click();
+
+    const tabs = document.getElementsByClassName("tabcontent");
+
+if (tabs.length > 0) {
+  document.getElementById("defaultOpen").click();
+}

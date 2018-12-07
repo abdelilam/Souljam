@@ -6,5 +6,6 @@ class PagesController < ApplicationController
 
   def dashboard
     @skills = Skill.where(user: current_user)
+    @jamms = Jamm.joins(:participations).where(participations: {user: current_user})
   end
 end

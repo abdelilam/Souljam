@@ -1,8 +1,7 @@
-
 <div class="tab">
-  <button class="tablinks" onclick="javascript:document.openJamtab(event, 'Instruments')" id="defaultOpen">All Instruments</button>
-  <button class="tablinks" onclick="javascript:document.openJamtab(event, 'Sessions')">All Jams</button>
-  <button class="tablinks" onclick="javascript:document.openJamtab(event, 'Profile')">Profile</button>
+  <button class="tablinks" onclick="document.openJamtab(event, 'Instruments')" id="defaultOpen">All Instruments</button>
+  <button class="tablinks" onclick="document.openJamtab(event, 'Sessions')">All Jams</button>
+  <button class="tablinks" onclick="document.openJamtab(event, 'Profile')">Profile</button>
 </div>
 
 <div id="Instruments" class="tabcontent">
@@ -18,8 +17,17 @@
 
 
 <div id="Sessions" class="tabcontent">
-  <h3>All Jams</h3>
-  <p>Show all goes here</p>
+  <div class="container-fluid">
+    <div class="row">
+      <h3 class="h3-tab-content-title">All Jams</h3>
+        <% @jamms.each do |jamm| %>
+          <div class="col-xs-12 col-sm-4">
+            <%= render "pages/jamms_tab_card", jamm: jamm %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div id="Profile" class="tabcontent">
@@ -35,8 +43,11 @@
     <a class="jam-options-link" href="/dashboard" target="_self">
       <i class="fas fa-user"></i></a>
     <a class="jam-options-link" href="" target="_self">
-      <i class="fas fa-search"></i></a>
-    <a class="jam-options-link" href="/users/sign_out" target="_self">
-      <i class="fas fa-sign-out-alt"></i></a>
+      <i class="fas fa-search"></i>
+    </a>
+    <%= link_to destroy_user_session_path, method: :delete, class: "jam-options-link",target:"_self",rel:"nofollow" do %>
+        <i class="fas fa-sign-out-alt"></i>
+        <% t(".sign_out", default: "Log out") %>
+    <% end %>
   </div>
 </div>

@@ -1,7 +1,6 @@
 .form-login {
   background: $light-gray;
   padding: 10px 20px;
-  margin-top: 50px;
   border-radius: 15px;
   box-shadow: 3px 3px 4px rgba(56, 153, 174, 0.2);
   h2 {
@@ -14,6 +13,9 @@
   label {
     color: black;
   }
+  .margin-top {
+    margin-top: 50px;
+  }
   .btn {
     width: 100%;
     margin-bottom: 20px;
@@ -22,4 +24,27 @@
   .form-control {
     border-radius: 15px;
   }
+}
+.form-login2 {
+  background: $light-gray;
+  opacity: 0.9;
+  padding: 10px 20px;
+  border-radius: 15px;
+  box-shadow: 3px 3px 4px rgba(56, 153, 174, 0.2);
+  label {
+    color: black;
+  }
+  .btn {
+    width: 100%;
+    margin-bottom: 20px;
+    border-radius: 20px;
+  }
+}
+.jams-new {
+  margin-bottom: 40px;
+}
+.jams-new-h1 {
+  color: #6BCDC1;
+  text-align: center;
+  text-shadow: 2px 2px #E5E5E5;
 }
