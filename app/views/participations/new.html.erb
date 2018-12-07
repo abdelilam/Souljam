@@ -1,2 +1,5 @@
-<h1>Participants#new</h1>
-<p>Find me in app/views/participants/new.html.erb</p>
+
+ <%= simple_form_for [@jamm, @participation] do |f| %>
+     #<%= f.input :instrument, collection: @instruments.group_by(&:category), as: :grouped_select, group_method: :last, label_method: :name, value_method: :id, include_blank: false %>
+    <div id="f2submit"><%= f.submit "Submit" %><div>
+<% end %>

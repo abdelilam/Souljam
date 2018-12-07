@@ -1,3 +1,7 @@
+
+
+
+
 <div class="card">
   <div class="card-image-top" style="background: url('https://source.unsplash.com/collection/3471774') no-repeat center center; height: 200px;">
   </div>
@@ -22,9 +26,20 @@
           <% if policy(@jamm).destroy? %>
             <%= link_to "Delete", jamm_path(@jamm), method: :delete,
                 data: { confirm: "Are you sure?" } %><% end %></li>
+       <li class="list-group-item">
+         <%= link_to "Join",  new_jamm_participation_path(@jamm), class: 'btn btn-primary' %> </li>
+      
       </ul>
     </div>
   </div>
+
+
+
+<hr>
+<% @jamm.participations.each do |participation| %>
+  <%= render 'jamms/participation', participation: participation %>
+<% end %>
+<hr>
 
 <div class="container container-sticky-right">
   <div class="hover">
@@ -42,4 +57,3 @@
     <% end %>
   </div>
 </div>
-

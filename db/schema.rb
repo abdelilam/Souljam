@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_06_144631) do
+ActiveRecord::Schema.define(version: 2018_12_07_153657) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,8 @@ ActiveRecord::Schema.define(version: 2018_12_06_144631) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "instrument_id"
+    t.index ["instrument_id"], name: "index_participations_on_instrument_id"
     t.index ["jamm_id"], name: "index_participations_on_jamm_id"
     t.index ["user_id"], name: "index_participations_on_user_id"
   end
@@ -68,6 +70,7 @@ ActiveRecord::Schema.define(version: 2018_12_06_144631) do
   end
 
   add_foreign_key "jamms", "users", column: "creator_id"
+  add_foreign_key "participations", "instruments"
   add_foreign_key "participations", "jamms"
   add_foreign_key "participations", "users"
   add_foreign_key "skills", "instruments"
