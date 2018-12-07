@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
 
   resources :jamms do
-    resources :participants, only: [ :new, :create, :edit, :destroy ]
+    resources :participations, only: [ :new, :create,  :destroy ]
   end
 
   get 'dashboard', to: 'pages#dashboard'
