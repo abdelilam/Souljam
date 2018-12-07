@@ -1,2 +1,15 @@
 <h1>Jamms#show</h1>
-<p>Find me in app/views/jamms/show.html.erb</p>
+<p><%= @jamm.title %></p>
+<p><%= @jamm.description %></p>
+<p><%= @jamm.location %></p>
+<p><%= @jamm.date %></p>
+<p><%= @jamm.capacity %></p>
+<p><%= @jamm.duration %></p>
+<p><%= User.find(@jamm.creator_id).email %></p>
+<% if policy(@jamm).edit? %>
+  <%= link_to "Edit", edit_jamm_path(@jamm) %>
+<% end %>
+<% if policy(@jamm).destroy? %>
+  <%= link_to "Delete", jamm_path(@jamm), method: :delete,
+      data: { confirm: "Are you sure?" } %>
+<% end %>
