@@ -1,24 +1,60 @@
 class JammsController < ApplicationController
-
+  skip_before_action :authenticate_user!, only: [:index, :show]
   def index
+    @jamms = policy_scope(Jamm).order(created_at: :desc)
   end
 
+  def dashboard
+    @jamms = Jamm.all.where(creator_id: current_user)
+    authorize @jamms
+  end
 
   def show
+    @jamm = Jamm.find(params[:id])
+    authorize @jamm
   end
 
   def create
+    @jamm = Jamm.new(jamm_params)
+    @jamm.creator_id = current_user.id
+    authorize @jamm
+    if @jamm.save
+      redirect_to jamm_path(@jamm)
+    else
+      render 'new'
+    end
   end
 
   def new
+    @jamm = Jamm.new
+    authorize @jamm
   end
 
   def edit
+    @jamm = Jamm.find(params[:id])
+    authorize @jamm
   end
 
   def update
+    @jamm = Jamm.find(params[:id])
+    @jamm.update(jamm_params)
+    authorize @jamm
+    if @jamm.save
+      redirect_to jamm_path(@jamm)
+    else
+      render 'edit'
+    end
   end
 
   def destroy
+    @jamm = Jamm.find(params[:id])
+    @jamm.destroy
+    authorize @jamm
+  end
+
+  private
+
+  def jamm_params
+    params.require(:jamm).permit(:title, :description, :location, :date, :capacity, :duration, :creator_id)
   end
 end

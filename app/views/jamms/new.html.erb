@@ -1,2 +1,11 @@
 <h1>Jamms#new</h1>
-<p>Find me in app/views/jamms/new.html.erb</p>
+<p><%= simple_form_for @jamm do |f| %></p>
+<p><%= f.input :title %></p>
+<p><%= f.input :description %></p>
+<p><%= f.input :location %></p>
+<p><%= f.input :date %></p>
+<p><%= f.input :capacity %></p>
+<p><%= f.input :duration %></p>
+<p><%= f.submit "Create a jam session" %></p>
+<p>I NEED THIS PARAGRAPH TO MAKE THE SUBMIT BUTTON SHOWN</p>
+<% end %>
