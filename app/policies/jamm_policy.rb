@@ -1,7 +1,7 @@
 class JammPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.all
+      scope.where.not(creator_id: user)
     end
   end
 
@@ -14,11 +14,11 @@ class JammPolicy < ApplicationPolicy
   end
 
   def update?
-    true
+    record.creator_id == user.id
   end
 
   def destroy?
-    true
+    record.creator_id == user.id
   end
 
   def dashboard?

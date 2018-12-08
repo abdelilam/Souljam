@@ -8,18 +8,22 @@
   <div class="container-fluid">
     <div class="row">
       <h3 class="h3-tab-content-title">All Instruments</h3>
-
+      <p><%= link_to "Add a skill", new_skill_path %></p>
       <% @skills.each do |skill| %>
         <div class="col-xs-12 col-sm-4">
           <%= render "pages/instruments_tab_card", skill: skill %>
         </div>
       <% end %>
+</div>
+</div>
+</div>
 
 
 <div id="Sessions" class="tabcontent">
   <div class="container-fluid">
     <div class="row">
       <h3 class="h3-tab-content-title">All Jams</h3>
+      <p><%= link_to "Create a jam session", new_jamm_path %></p>
         <% @jamms.each do |jamm| %>
           <div class="col-xs-12 col-sm-4">
             <%= render "pages/jamms_tab_card", jamm: jamm %>
@@ -28,7 +32,6 @@
       </div>
     </div>
   </div>
-</div>
 
 <div id="Profile" class="tabcontent">
   <h3>Profile</h3>
