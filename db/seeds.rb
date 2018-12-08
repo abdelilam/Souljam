@@ -1,16 +1,12 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+
 require 'faker'
 Participation.destroy_all
 Instrument.destroy_all
 Jamm.destroy_all
 User.destroy_all
 Skill.destroy_all
+
+
 
 
 addresses = ["8813 lasalle, Montreal", "7519 mountmatten, Cote st luc", "12 maisonneuve, Montreal", "303 university, Montreal", "10 hampsted, Montreal"]
@@ -44,6 +40,10 @@ end
 # USER
 50.times do |n|
   user = User.create!(
+    username: Faker::Name.middle_name,
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    avatar: Faker::Avatar.image,
     email: Faker::Internet.email,
     password: '123456'
   )
@@ -63,27 +63,6 @@ end
   puts "\n"
 end
 
-# i = 1
-
-# # Instrument
-# instrument_category = ["Bass Guitar", "Drum Set", "Classic guitar", "Flute", "Harp", "Maracas", "Piano", "Saxophone",
-#                       "Triangle", "Trumpet","Violen", "Electric guitar"]
-
-# i = 1
-
-# instrument_category.each do |instrument|
-#  Instrument.create!( category: instrument,
-
-# 100.times do
-#   Instrument.create!(
-#     model: Faker::G.location,
-#     user_id: User.ids.sample,
-#     instrument_type_id: InstrumentType.all.sample.id
-#     )
-#   puts "Instrument ##{counter} done!"
-#   puts "\n"
-#   i += 1
-# end
 
 # JAMMS
 
@@ -123,26 +102,4 @@ end
   puts "\n"
 end
 
-# Participation
 
-# i = 1
-
-# Jamm.all.each do |jam|
-#   num = rand(1..20)
-#   num.times do
-#     # user_id = User.all.sample.id
-#     # if Instrument.where(user_id: user_id).empty?
-#     #  instrument_participant_id = Instrument.all.sample.id
-#     # else
-#     #   instrument_participant_id = Instrument.where(user_id: user_id).sample.id
-#     # end
-#     new_participation = Participation.create!(jamm_id: jam.id, user_id: user_id, instrument_id: participation.instrument_id, status:["Pending", "Active"].sample)
-#   end
-#   puts "Jamm participant ##{counter} has joint the group!"
-#   puts "\n"
-#   i += 1
-# end
-
-
-# User.create!(email: 'user@user.com', password: '123456', username: 'Knopfler', picture: "p#{1}", l)
-# Instrument.create!(categoty:
