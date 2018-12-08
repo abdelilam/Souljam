@@ -2,7 +2,7 @@ class Instrument < ApplicationRecord
   CATEGORIES = ["String", "Guitar", "Woodwind", "Brass", "Percussion", "Keybords"]
    has_many :users, through: :skills
    has_many :participations
-   has_many :skills
+   has_many :skills, dependent: :destroy
 
 
   validates :name, presence: :true
