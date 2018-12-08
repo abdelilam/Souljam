@@ -13,6 +13,7 @@
       <p><%= f.input :date, as: :date, html5: true %></p>
       <p><%= f.input :capacity %></p>
       <p><%= f.input :duration %></p>
+      <p><%= f.input :instruments, collection: @instruments.group_by(&:category), as: :grouped_select, group_method: :last, label_method: :name, value_method: :id, include_blank: false %></p>
       </div>
       <div class="form-actions">
       <p><%= f.submit "Create a jam session", class: "btn btn-primary"%></p>

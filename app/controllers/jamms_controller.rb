@@ -23,11 +23,18 @@ class JammsController < ApplicationController
     else
       render 'new'
     end
+    @participation = Participation.new
+    @participation.jamm_id = @jamm.id
+    @participation.user = current_user
+    @participation.instrument_id = params[:jamm][:instruments]
+    @participation.status = "Accepted"
+    @participation.save
   end
 
   def new
     @jamm = Jamm.new
     authorize @jamm
+    @instruments = Instrument.joins(:skills).where(skills: {user: current_user})
   end
 
   def edit

@@ -30,6 +30,7 @@
          <%= link_to "Join",  new_jamm_participation_path(@jamm), class: 'btn btn-primary' %> </li>
          <li class="list-group-item">
         <hr>
+        <h3>Participants</h3>
         <% @jamm.participations.each do |participation| %>
          <%= render 'jamms/participation', participation: participation %>
           <% end %>
