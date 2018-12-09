@@ -29,6 +29,14 @@ class ParticipationPolicy < ApplicationPolicy
     end
   end
 
+  def accept?
+    if user.nil?
+      false
+    else
+      record.jamm.creator_id == user.id && record.user != user && record.jamm.capacity != record.jamm.participations.where(status: 'Accepted').size
+    end
+  end
+
   private
 
   def is_user?
