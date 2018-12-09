@@ -14,7 +14,7 @@ class ParticipationPolicy < ApplicationPolicy
   end
 
   def destroy?
-    is_user?
+    is_user? && record.jamm.creator_id != user.id
   end
 
   private
