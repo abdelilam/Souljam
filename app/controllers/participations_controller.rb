@@ -1,5 +1,5 @@
 class ParticipationsController < ApplicationController
-  skip_after_action :verify_authorized, only: [:accept, :refuse]
+  skip_after_action :verify_authorized, only: [:accept, :refuse, :create]
   def index
 
   end
@@ -13,15 +13,20 @@ class ParticipationsController < ApplicationController
 
   def create
     @jamm = Jamm.find(params[:jamm_id])
-    @participation = Participation.new
-    @participation.jamm_id = params[:jamm_id]
-    @participation.user = current_user
-    @participation.instrument_id = participation_params[:instrument]
-    authorize @participation
-    if @participation.save
-      redirect_to jamm_path(@jamm)
+    @accepted_array = Participation.where(["jamm_id = ? and status = ?", @jamm.id, 'Accepted'])
+    if @accepted_array.size <= @jamm.capacity
+      @participation = Participation.new
+      @participation.jamm_id = params[:jamm_id]
+      @participation.user = current_user
+      @participation.instrument_id = participation_params[:instrument]
+      authorize @participation
+      if @participation.save
+        redirect_to jamm_path(@jamm)
+      else
+        render 'new'
+      end
     else
-      render 'new'
+      "This jam session is full"
     end
   end
 
@@ -41,15 +46,23 @@ class ParticipationsController < ApplicationController
   end
 
   def accept
-    @participation = Participation.find(params[:jamm_id])
-    @participation.status = 'Accepted'
-    @participation.save
+    @jamm = Jamm.find(Participation.find(params[:jamm_id]).jamm_id)
+    @accepted_array = Participation.where(["jamm_id = ? and status = ?", @jamm.id, 'Accepted'])
+    if @accepted_array.size < @jamm.capacity
+      @participation = Participation.find(params[:jamm_id])
+      @participation.status = 'Accepted'
+      @participation.save
+      redirect_to jamm_path(@participation.jamm)
+    else
+      "This session is full !"
+    end
   end
 
   def refuse
-    @participation = Participation.find(params[:jamm_id])
-    @participation.status = 'Refused'
-    @participation.save
+      @participation = Participation.find(params[:jamm_id])
+      @participation.status = 'Refused'
+      @participation.save
+      redirect_to jamm_path(@participation.jamm)
   end
 
   private
