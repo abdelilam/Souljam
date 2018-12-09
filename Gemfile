@@ -11,6 +11,7 @@ gem 'redis'
 gem 'devise'
 gem 'faker'
 gem 'pundit'
+gem 'carrierwave', '~> 1.2'
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass', '~> 3.3'
@@ -19,9 +20,11 @@ gem 'sassc-rails'
 gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
+gem 'cloudinary', '~> 1.9.1'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
+
 end
 
 group :development, :test do

@@ -14,11 +14,11 @@ class JammPolicy < ApplicationPolicy
   end
 
   def update?
-    record.creator_id == user.id
+    record.creator == user
   end
 
   def destroy?
-    record.creator_id == user.id
+    record.creator == user
   end
 
   def dashboard?
