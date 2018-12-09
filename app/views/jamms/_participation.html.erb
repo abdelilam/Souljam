@@ -9,4 +9,6 @@
     <%= link_to "Cancel my participation", jamm_participation_path(participation), method: :delete,
     data: { confirm: "Are you sure ?"} %>
   <% end %>
+  <% if policy(participation).status? %>
+   <p><%= link_to "Accept", jamm_accept_path(participation), method: :patch %> <%= link_to "Refuse", jamm_refuse_path(participation), method: :patch %></p><% end %>
 </div><br>

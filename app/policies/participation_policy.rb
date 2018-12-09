@@ -17,6 +17,10 @@ class ParticipationPolicy < ApplicationPolicy
     is_user? && record.jamm.creator_id != user.id
   end
 
+  def status?
+    record.jamm.creator_id == user.id && record.user != user
+  end
+
   private
 
   def is_user?
