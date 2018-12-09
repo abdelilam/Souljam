@@ -2,6 +2,7 @@
 <% user = participation.user %>
 
 <div id="participant-<%= user.id %>">
+  <h5><%= user.username %></h5>
   <p>email: <%= user.email %> </p>
   <p>instrument: <%= participation.instrument.name %></p>
   <p>status: <%= participation.status %> </p>
