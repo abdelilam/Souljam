@@ -26,6 +26,6 @@ class JammPolicy < ApplicationPolicy
   end
 
   def join?
-    record.creator_id != user.id
+    record.creator_id != user.id && record.participations.where(user: user).empty?
   end
 end
