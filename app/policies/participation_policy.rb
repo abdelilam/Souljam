@@ -5,16 +5,8 @@ class ParticipationPolicy < ApplicationPolicy
     end
   end
 
-  def new?
-    true
-  end
-
   def create?
     true
-  end
-
-  def edit?
-    false
   end
 
   def update?

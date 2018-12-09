@@ -5,4 +5,8 @@
   <p>email: <%= user.email %> </p>
   <p>instrument: <%= participation.instrument.name %></p>
   <p>status: <%= participation.status %> </p>
+  <% if policy(participation).destroy? %>
+    <%= link_to "Cancel my participation", jamm_participation_path(participation), method: :delete,
+    data: { confirm: "Are you sure ?"} %>
+  <% end %>
 </div><br>

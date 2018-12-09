@@ -36,9 +36,9 @@ class ParticipationsController < ApplicationController
 
   def destroy
     @participation = Participation.find(params[:jamm_id])
-    @oarticipation.destroy
+    @participation.destroy
     authorize @participation
-
+    redirect_to jamm_path(params[:id])
   end
 
   private
