@@ -1,11 +1,12 @@
 class ParticipationsController < ApplicationController
-  skip_after_action :verify_authorized, only: [:accept, :refuse, :create]
+  skip_after_action :verify_authorized, only: [:accept, :refuse]
   def index
 
   end
 
   def new
     @jamm = Jamm.find(params[:jamm_id])
+    authorize @jamm
     @participation = Participation.new
     authorize @participation
     @instruments = Instrument.joins(:skills).where(skills: {user: current_user})
@@ -13,20 +14,16 @@ class ParticipationsController < ApplicationController
 
   def create
     @jamm = Jamm.find(params[:jamm_id])
-    @accepted_array = Participation.where(["jamm_id = ? and status = ?", @jamm.id, 'Accepted'])
-    if @accepted_array.size <= @jamm.capacity
-      @participation = Participation.new
-      @participation.jamm_id = params[:jamm_id]
-      @participation.user = current_user
-      @participation.instrument_id = participation_params[:instrument]
-      authorize @participation
-      if @participation.save
-        redirect_to jamm_path(@jamm)
-      else
-        render 'new'
-      end
+    authorize @jamm
+    @participation = Participation.new
+    @participation.jamm_id = params[:jamm_id]
+    @participation.user = current_user
+    @participation.instrument_id = participation_params[:instrument]
+    authorize @participation
+    if @participation.save
+      redirect_to jamm_path(@jamm)
     else
-      "This jam session is full"
+      render 'new'
     end
   end
 
