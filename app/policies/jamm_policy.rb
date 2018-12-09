@@ -14,6 +14,9 @@ class JammPolicy < ApplicationPolicy
   end
 
   def update?
+    record.creator == user
+  end
+
     if user.nil?
       false
     else
