@@ -17,11 +17,30 @@ class JammPolicy < ApplicationPolicy
     record.creator == user
   end
 
+    if user.nil?
+      false
+    else
+      record.creator_id == user.id
+    end
+  end
+
   def destroy?
-    record.creator == user
+    if user.nil?
+      false
+    else
+      record.creator_id == user.id
+    end
   end
 
   def dashboard?
     true
+  end
+
+  def join?
+    if user.nil?
+      false
+    else
+      record.creator_id != user.id && record.participations.where(user: user).empty? && record.capacity != record.participations.where(status: 'Accepted').size
+    end
   end
 end

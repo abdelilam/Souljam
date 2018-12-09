@@ -4,5 +4,11 @@
 <div id="participant-<%= user.id %>">
   <p>email: <%= user.email %> </p>
   <p>instrument: <%= participation.instrument.name %></p>
-  <p>status: Pending </p>
-</div>
+  <p>status: <%= participation.status %> </p>
+  <% if policy(participation).destroy? %>
+    <%= link_to "Cancel my participation", jamm_participation_path(participation), method: :delete,
+    data: { confirm: "Are you sure ?"} %>
+  <% end %>
+  <% if policy(participation).status? %>
+   <p><%= link_to "Accept", jamm_accept_path(participation), method: :patch %> <%= link_to "Refuse", jamm_refuse_path(participation), method: :patch %></p><% end %>
+</div><br>
