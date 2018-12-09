@@ -1,5 +1,5 @@
 class ParticipationsController < ApplicationController
-
+  skip_after_action :verify_authorized, only: [:accept, :refuse]
   def index
 
   end
@@ -23,7 +23,6 @@ class ParticipationsController < ApplicationController
     else
       render 'new'
     end
-
   end
 
   def edit
@@ -36,9 +35,21 @@ class ParticipationsController < ApplicationController
 
   def destroy
     @participation = Participation.find(params[:jamm_id])
-    @oarticipation.destroy
+    @participation.destroy
     authorize @participation
+    redirect_to jamm_path(params[:id])
+  end
 
+  def accept
+    @participation = Participation.find(params[:jamm_id])
+    @participation.status = 'Accepted'
+    @participation.save
+  end
+
+  def refuse
+    @participation = Participation.find(params[:jamm_id])
+    @participation.status = 'Refused'
+    @participation.save
   end
 
   private

@@ -5,16 +5,8 @@ class ParticipationPolicy < ApplicationPolicy
     end
   end
 
-  def new?
-    true
-  end
-
   def create?
     true
-  end
-
-  def edit?
-    false
   end
 
   def update?
@@ -22,7 +14,11 @@ class ParticipationPolicy < ApplicationPolicy
   end
 
   def destroy?
-    is_user?
+    is_user? && record.jamm.creator_id != user.id
+  end
+
+  def status?
+    record.jamm.creator_id == user.id && record.user != user
   end
 
   private
