@@ -14,11 +14,19 @@ class ParticipationPolicy < ApplicationPolicy
   end
 
   def destroy?
-    is_user? && record.jamm.creator_id != user.id
+    if user.nil?
+      false
+    else
+      is_user? && record.jamm.creator_id != user.id
+    end
   end
 
   def status?
-    record.jamm.creator_id == user.id && record.user != user
+    if user.nil?
+      false
+    else
+      record.jamm.creator_id == user.id && record.user != user
+    end
   end
 
   private
