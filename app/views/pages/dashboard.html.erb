@@ -9,7 +9,7 @@
     <div class="row">
       <h3 class="h3-tab-content-title">My skills</h3>
       <% if @skills.empty? %>
-        <p>You have to add at least one skill before using SoulJam</p>
+        <p style="color:red;">You have to add at least one skill before using SoulJam</p>
       <% end %>
       <p><%= link_to "Add a skill", new_skill_path %></p>
       <% @skills.each do |skill| %>
@@ -32,14 +32,24 @@
             <%= render "pages/jamms_tab_card", jamm: jamm %>
           </div>
           <% end %>
+          </div>
+          <div class="row">
           <h3 class="h3-tab-content-title">My Participations</h3>
           <% @myparts.each do |jamm| %>
           <div class="col-xs-12 col-sm-4">
             <%= render "pages/jamms_tab_card", jamm: jamm %>
           </div>
         <% end %>
+        </div>
+        <div class="row">
+        <h3 class="h3-tab-content-title">My Applications</h3>
+          <% @myapplications.each do |jamm| %>
+          <div class="col-xs-12 col-sm-4">
+            <%= render "pages/jamms_tab_card", jamm: jamm %>
+          </div>
+        <% end %>
+        </div>
       </div>
-    </div>
   </div>
 
 <!-- <div id="Profile" class="tabcontent">

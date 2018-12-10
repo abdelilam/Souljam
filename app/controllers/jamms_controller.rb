@@ -1,7 +1,11 @@
 class JammsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
   def index
-    @jamms = policy_scope(Jamm).order(created_at: :desc)
+    if params[:query].present?
+      @jamms = policy_scope(Jamm).where("location ILIKE ?", "%#{params[:query]}%")
+    else
+      @jamms = policy_scope(Jamm).order(created_at: :desc)
+    end
   end
 
   def dashboard
@@ -13,6 +17,12 @@ class JammsController < ApplicationController
     @jamm = Jamm.find(params[:id])
     authorize @jamm
     @messages = Message.all.where(jamm_id: @jamm.id)
+
+    @markers =
+      {
+        lng: @jamm.longitude,
+        lat: @jamm.latitude
+      }
   end
 
   def create

@@ -1,10 +1,12 @@
 
 require 'faker'
+Message.destroy_all
+Skill.destroy_all
+Jamm.destroy_all
 Participation.destroy_all
 Instrument.destroy_all
-Jamm.destroy_all
 User.destroy_all
-Skill.destroy_all
+
 
 
 
@@ -26,43 +28,44 @@ instruments = {
 }
 
 instrument_pictures = {
-  "Violin" => "seed_img/violin.jpg",
-  "Viola" => "seed_img/viola.jpg",
-  "Cello" => "seed_img/Cello.jpg",
-  "Double bass" => "seed_img/Double bass.jpg",
-  "Bass" => "seed_img/bass.jpg",
-  "Classic" => "seed_img/classic.jpg",
-  "Folk" => "seed_img/folk.jpg",
-  "Flamenca" => "seed_img/falmenca.jpg",
-  "Electric" => "seed_img/electric.jpg",
-  "Piccolo" => "seed_img/Piccolo.jpg",
-  "Flute" => "seed_img/Flute.jpg",
-  "Oboe" => "seed_img/Oboe.jpg",
-  "English Horn" => "seed_img/english horn.jpg",
-  "Clarinet" => "seed_img/Clarinet.jpg",
-  "Trumpet" => "seed_img/Trumpet.jpg",
-  "Trombone" => "seed_img/Trombone.jpg",
-  "Tuba" => "seed_img/Tuba.jpg",
-  "French Horn" => "seed_img/French Horn.jpg",
-  "Drum" => "seed_img/Drum.jpg",
-  "Cymbals" => "seed_img/Cymbals.jpg",
-  "Guiro" => "seed_img/Guiro.jpg",
-  "Timpani" => "seed_img/Timpani.jpg",
-  "Triangle" => "seed_img/Triangle.jpg",
-  "Piano" => "seed_img/Piano.jpg",
-  "Harpsichord" => "seed_img/Harpsichord.jpg",
-  "Organ" => "seed_img/Organ.jpg",
+  "Violin" => "db/seed_img/violin.jpg",
+  "Viola" => "db/seed_img/viola.jpg",
+  "Cello" => "db/seed_img/Cello.jpg",
+  "Double bass" => "db/seed_img/Double_bass.jpg",
+  "Bass" => "db/seed_img/bass.jpg",
+  "Classic" => "db/seed_img/classic.jpg",
+  "Folk" => "db/seed_img/folk.jpg",
+  "Flamenca" => "db/seed_img/flamenca.jpg",
+  "Electric" => "db/seed_img/electric.jpg",
+  "Piccolo" => "db/seed_img/Piccolo.jpg",
+  "Flute" => "db/seed_img/Flute.jpg",
+  "Oboe" => "db/seed_img/Oboe.jpg",
+  "English Horn" => "db/seed_img/english_horn.jpeg",
+  "Clarinet" => "db/seed_img/Clarinet.jpg",
+  "Trumpet" => "db/seed_img/Trumpet.jpg",
+  "Trombone" => "db/seed_img/Trombone.jpg",
+  "Tuba" => "db/seed_img/Tuba.jpg",
+  "French Horn" => "db/seed_img/French_Horn.jpg",
+  "Drum" => "db/seed_img/Drum.jpg",
+  "Cymbals" => "db/seed_img/Cymbals.jpg",
+  "Guiro" => "db/seed_img/Guiro.jpg",
+  "Timpani" => "db/seed_img/Timpani.jpg",
+  "Triangle" => "db/seed_img/Triangle.jpg",
+  "Piano" => "db/seed_img/Piano.jpg",
+  "Harpsichord" => "db/seed_img/Harpsichord.jpg",
+  "Organ" => "db/seed_img/Organ.jpg",
 
 }
 
 insts = []
 instruments.each_key do |category|
   instruments[category].each do |instrument|
-    inst = Instrument.create!(
+    inst = Instrument.new(
       name: instrument,
-      category: category,
-      icon_url: instrument_pictures[instrument]
+      category: category
     )
+    inst.remote_icon_url_url = instrument_pictures[instrument]
+    inst.save
     insts << inst
   end
 end

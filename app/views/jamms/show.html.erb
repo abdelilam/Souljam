@@ -33,6 +33,13 @@
          <%= link_to "Join",  new_jamm_participation_path(@jamm), class: 'btn btn-primary' %><% end %>
           <%= link_to "Send a message", new_jamm_message_path(@jamm), class: 'btn btn-primary' %>
          </li>
+         <div
+            id="map"
+            style="width: 50%;
+            height: 600px;"
+            data-markers="<%= @markers.to_json %>"
+            data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+          ></div>
          <li class="list-group-item">
         <hr>
         <h3>Participants</h3>
