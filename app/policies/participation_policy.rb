@@ -25,7 +25,7 @@ class ParticipationPolicy < ApplicationPolicy
     if user.nil?
       false
     else
-      record.jamm.creator_id == user.id && record.user != user
+      record.jamm.creator_id == user.id && record.user != user && record.status != 'Refused'
     end
   end
 
