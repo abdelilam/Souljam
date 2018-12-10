@@ -15,9 +15,11 @@
             <li class="list-group-item">
             <i class="fas fa-calendar-alt"></i><%= jamm.date %>
             <i class="fas fa-users"></i><%= jamm.capacity %>
-            <i class="fas fa-clock"></i><%= jamm.duration %></li>
+            <i class="fas fa-clock"></i><%= jamm.duration %> hr</li>
             <li class="list-group-item">
-            <%= User.find(jamm.creator_id).email %></li>
+            <%= User.find(jamm.creator_id).email.truncate(15) %>
+              <%= link_to "See more", jamm_path(jamm) %></li>
+            </li>
             <% if policy(jamm).edit? %>
             <li class="list-group-item">
               <%= link_to "Edit", edit_jamm_path(jamm) %>
