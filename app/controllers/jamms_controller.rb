@@ -66,6 +66,6 @@ class JammsController < ApplicationController
   private
 
   def jamm_params
-    params.require(:jamm).permit(:title, :description, :location, :date, :capacity, :duration, :creator_id)
+    params.require(:jamm).permit(:title, :description, :location, :date, :capacity, :duration, :creator_id, :photo)
   end
 end

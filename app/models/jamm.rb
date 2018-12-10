@@ -1,4 +1,6 @@
 class Jamm < ApplicationRecord
+  mount_uploader :photo, PhotoUploader
+
   has_many :participations, dependent: :destroy
   has_many :users, through: :participations
   has_many :instruments, through: :participations

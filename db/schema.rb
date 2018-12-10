@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 2018_12_10_102904) do
     t.datetime "updated_at", null: false
     t.integer "creator_id"
     t.integer "duration", default: 1
+    t.string "photo"
   end
 
   create_table "messages", force: :cascade do |t|
