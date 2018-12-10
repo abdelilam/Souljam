@@ -1,11 +1,4 @@
-
-
-
-
-<div class="card">
-  <div class="card-image-top2" style="background: url('<%=  @jamm.photo.url ? cl_image_path(@jamm.photo.url, height: 300, width: 400, crop: :fill) : image_path("background-new-jam.jpg") %>') no-repeat center center">
-  </div>
-</div>
+ <%= cl_image_tag @jamm.photo, class: "instrument-card1" %>
     <div class="card-header">
       <h3><%= @jamm.title %></h3>
     </div>
