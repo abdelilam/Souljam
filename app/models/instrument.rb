@@ -1,6 +1,6 @@
 class Instrument < ApplicationRecord
 
-    mount_uploader :avatar, PhotoUploader
+    mount_uploader :icon_url, PhotoUploader
 
   CATEGORIES = ["String", "Guitar", "Woodwind", "Brass", "Percussion", "Keybords"]
    has_many :users, through: :skills

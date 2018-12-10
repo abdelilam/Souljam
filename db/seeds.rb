@@ -61,7 +61,7 @@ instruments.each_key do |category|
     inst = Instrument.create!(
       name: instrument,
       category: category,
-      icon_url: instrument.icon_url[instrument]
+      icon_url: instrument_pictures[instrument]
     )
     insts << inst
   end
