@@ -1,4 +1,7 @@
 class Instrument < ApplicationRecord
+
+    mount_uploader :avatar, PhotoUploader
+
   CATEGORIES = ["String", "Guitar", "Woodwind", "Brass", "Percussion", "Keybords"]
    has_many :users, through: :skills
    has_many :participations

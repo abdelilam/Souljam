@@ -25,12 +25,43 @@ instruments = {
   "Keybords" => ["Piano", "Harpsichord", "Organ"]
 }
 
+instrument_pictures = {
+  "Violin" => "seed_img/violin.jpg",
+  "Viola" => "seed_img/viola.jpg",
+  "Cello" => "seed_img/Cello.jpg",
+  "Double bass" => "seed_img/Double bass.jpg",
+  "Bass" => "seed_img/bass.jpg",
+  "Classic" => "seed_img/classic.jpg",
+  "Folk" => "seed_img/folk.jpg",
+  "Flamenca" => "seed_img/falmenca.jpg",
+  "Electric" => "seed_img/electric.jpg",
+  "Piccolo" => "seed_img/Piccolo.jpg",
+  "Flute" => "seed_img/Flute.jpg",
+  "Oboe" => "seed_img/Oboe.jpg",
+  "English Horn" => "seed_img/english horn.jpg",
+  "Clarinet" => "seed_img/Clarinet.jpg",
+  "Trumpet" => "seed_img/Trumpet.jpg",
+  "Trombone" => "seed_img/Trombone.jpg",
+  "Tuba" => "seed_img/Tuba.jpg",
+  "French Horn" => "seed_img/French Horn.jpg",
+  "Drum" => "seed_img/Drum.jpg",
+  "Cymbals" => "seed_img/Cymbals.jpg",
+  "Guiro" => "seed_img/Guiro.jpg",
+  "Timpani" => "seed_img/Timpani.jpg",
+  "Triangle" => "seed_img/Triangle.jpg",
+  "Piano" => "seed_img/Piano.jpg",
+  "Harpsichord" => "seed_img/Harpsichord.jpg",
+  "Organ" => "seed_img/Organ.jpg",
+
+}
+
 insts = []
 instruments.each_key do |category|
   instruments[category].each do |instrument|
     inst = Instrument.create!(
       name: instrument,
-      category: category
+      category: category,
+      icon_url: instrument.icon_url[instrument]
     )
     insts << inst
   end
