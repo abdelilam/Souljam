@@ -19,6 +19,11 @@ class MessagesController < ApplicationController
   end
 
   def destroy
+    @jamm = Jamm.find(params[:jamm_id])
+    @message = Message.find(params[:id])
+    @message.destroy
+    authorize @message
+    redirect_to jamm_path(@jamm)
   end
 
   private
