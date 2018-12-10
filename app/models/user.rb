@@ -11,4 +11,5 @@ class User < ApplicationRecord
   has_many :participations
   has_many :skills
   has_many :jamms
+  has_many :messages
 end

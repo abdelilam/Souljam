@@ -12,6 +12,7 @@ class JammsController < ApplicationController
   def show
     @jamm = Jamm.find(params[:id])
     authorize @jamm
+    @messages = Message.all.where(jamm_id: @jamm.id)
   end
 
   def create
