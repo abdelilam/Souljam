@@ -10,6 +10,7 @@ class ParticipationsController < ApplicationController
     @participation = Participation.new
     authorize @participation
     @instruments = Instrument.joins(:skills).where(skills: {user: current_user})
+    redirect_to dashboard_path if @instruments.empty?
   end
 
   def create
