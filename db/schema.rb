@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_10_104712) do
+ActiveRecord::Schema.define(version: 2018_12_10_102904) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,16 @@ ActiveRecord::Schema.define(version: 2018_12_10_104712) do
     t.integer "creator_id"
     t.integer "duration", default: 1
     t.string "photo"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.text "content"
+    t.bigint "user_id"
+    t.bigint "jamm_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["jamm_id"], name: "index_messages_on_jamm_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "participations", force: :cascade do |t|
@@ -75,6 +85,8 @@ ActiveRecord::Schema.define(version: 2018_12_10_104712) do
   end
 
   add_foreign_key "jamms", "users", column: "creator_id"
+  add_foreign_key "messages", "jamms"
+  add_foreign_key "messages", "users"
   add_foreign_key "participations", "instruments"
   add_foreign_key "participations", "jamms"
   add_foreign_key "participations", "users"
