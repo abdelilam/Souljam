@@ -36,6 +36,7 @@ class JammsController < ApplicationController
     @jamm = Jamm.new
     authorize @jamm
     @instruments = Instrument.joins(:skills).where(skills: {user: current_user})
+    redirect_to dashboard_path if @instruments.empty?
   end
 
   def edit
@@ -58,6 +59,7 @@ class JammsController < ApplicationController
     @jamm = Jamm.find(params[:id])
     @jamm.destroy
     authorize @jamm
+    redirect_to dashboard_path
   end
 
   private

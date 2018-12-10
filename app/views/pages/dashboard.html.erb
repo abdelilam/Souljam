@@ -1,13 +1,16 @@
 <div class="tab">
-  <button class="tablinks" onclick="document.openJamtab(event, 'Instruments')" id="defaultOpen">All Instruments</button>
-  <button class="tablinks" onclick="document.openJamtab(event, 'Sessions')">All Jams</button>
-  <button class="tablinks" onclick="document.openJamtab(event, 'Profile')">Profile</button>
+  <button class="tablinks" onclick="document.openJamtab(event, 'Instruments')" id="defaultOpen">My skills</button>
+  <button class="tablinks" onclick="document.openJamtab(event, 'Sessions')">My Jams</button>
+<!--   <button class="tablinks" onclick="document.openJamtab(event, 'Profile')">Profile</button> -->
 </div>
 
 <div id="Instruments" class="tabcontent">
   <div class="container-fluid">
     <div class="row">
-      <h3 class="h3-tab-content-title">All Instruments</h3>
+      <h3 class="h3-tab-content-title">My skills</h3>
+      <% if @skills.empty? %>
+        <p>You have to add at least one skill before using SoulJam</p>
+      <% end %>
       <p><%= link_to "Add a skill", new_skill_path %></p>
       <% @skills.each do |skill| %>
         <div class="col-xs-12 col-sm-4">
@@ -22,7 +25,7 @@
 <div id="Sessions" class="tabcontent">
   <div class="container-fluid">
     <div class="row">
-      <h3 class="h3-tab-content-title">All Jams</h3>
+      <h3 class="h3-tab-content-title">My Jams</h3>
       <p><%= link_to "Create a jam session", new_jamm_path %></p>
         <% @jamms.each do |jamm| %>
           <div class="col-xs-12 col-sm-4">
@@ -33,11 +36,11 @@
     </div>
   </div>
 
-<div id="Profile" class="tabcontent">
+<!-- <div id="Profile" class="tabcontent">
   <h3>Profile</h3>
   <p>Once built profile page here</p>
 </div>
-
+ -->
 <div class="container container-sticky-right">
   <div class="hover">
     <span>Jam Toolbar</span>
