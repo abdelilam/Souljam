@@ -1,11 +1,8 @@
-
 <% user = participation.user %>
 
-<div id="participant-<%= user.id %>">
-  <h5><%= cl_image_tag user.avatar, height: 50, radius: 50 %> <%= user.username %></h5>
-  <p>email: <%= user.email %> </p>
-  <p>instrument: <%= participation.instrument.name %></p>
-  <p>status: <%= participation.status %> </p>
+<div>
+  <%= cl_image_tag user.avatar, height: 100, radius: 100, class: "participant", id: "participant-#{user.id}", "data-id": user.id %>
+  <p><%= cl_image_tag participation.instrument.icon_url %> <%= participation.instrument.name %></p>
   <% if policy(participation).destroy? %>
     <%= link_to "Cancel my participation", jamm_participation_path(participation), method: :delete,
     data: { confirm: "Are you sure ?"} %>
@@ -13,3 +10,18 @@
   <% if policy(participation).accept? %>
    <%= link_to "Accept", jamm_accept_path(participation), method: :patch %><% end %> <% if policy(participation).status? %><%= link_to "Refuse", jamm_refuse_path(participation), method: :patch %><% end %>
 </div><br>
+
+<div class="participant-tooltip" id="participant-tooltip-<%= user.id %>" x-placement="top">
+  <div class="participant-tooltip-popper">
+    <div class="tippy-content">
+      <p><%= user.username %></p>
+      <p>Status: <%= participation.status %></p>
+    </div>
+  </div>
+</div>
+
+
+<style>
+  .participant-tooltip { display: none; }
+  .participant-tooltip-popper { color: white; }
+</style>

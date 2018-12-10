@@ -36,10 +36,16 @@
          <li class="list-group-item">
         <hr>
         <h3>Participants</h3>
-        <% @jamm.participations.each do |participation| %>
-         <%= render 'jamms/participation', participation: participation %>
-          <% end %>
+        <div class="container">
+          <div class="row">
+            <% @jamm.participations.each do |participation| %>
+              <div class="col-xs-4 col-sm-3 col-md-2">
+                <%= render 'jamms/participation', participation: participation %>
+              </div>
+            <% end %>
+          </div>
         <hr> </li>
+        </div>
         <h3>Messages</h3>
         <% @messages.each do |message| %>
         <p><strong><%= message.user.username %></strong>, the <%= message.created_at %></p>
