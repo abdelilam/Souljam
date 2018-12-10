@@ -2,6 +2,7 @@ class Jamm < ApplicationRecord
   has_many :participations, dependent: :destroy
   has_many :users, through: :participations
   has_many :instruments, through: :participations
+  has_many :messages
   belongs_to :creator, class_name: "User", foreign_key: "creator_id"
 
   validates :title, presence: true
