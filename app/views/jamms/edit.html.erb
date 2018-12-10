@@ -1,11 +1,22 @@
-<h1>Jamms#edit</h1>
-<p><%= simple_form_for @jamm do |f| %></p>
-<p><%= f.input :title %></p>
-<p><%= f.input :description %></p>
-<p><%= f.input :location %></p>
-<p><%= f.input :date %></p>
-<p><%= f.input :capacity %></p>
-<p><%= f.input :duration %></p>
-<p><%= f.submit "Create a jam session" %></p>
-<p>I NEED THIS PARAGRAPH TO MAKE THE SUBMIT BUTTON SHOWN</p>
-<% end %>
+<h1 class="jams-new-h1">Edit your Jam</h1>
+<div class="container jams-new">
+  <div class="row">
+    <div class="form-login2 margin-top">
+      <p><%= simple_form_for @jamm do |f| %></p>
+      <div class="form-inputs">
+      <p><%= f.input :title %></p>
+      <p><%= f.input :description %></p>
+      <p><%= f.input :location %></p>
+      <p><%= f.input :date %></p>
+      <p><%= f.input :capacity %></p>
+      <p><%= f.input :duration %></p>
+      <p><%= f.input :photo %></p>
+      </div>
+      <div class="form-actions">
+      <p><%= f.submit "Update jam session", class: "btn btn-primary" %></p>
+      </div>
+      <!-- <p>I NEED THIS PARAGRAPH TO MAKE THE SUBMIT BUTTON SHOWN</p> -->
+      <% end %>
+    </div>
+  </div>
+</div>
