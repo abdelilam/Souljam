@@ -17,6 +17,12 @@ class JammsController < ApplicationController
     @jamm = Jamm.find(params[:id])
     authorize @jamm
     @messages = Message.all.where(jamm_id: @jamm.id)
+
+    @markers =
+      {
+        lng: @jamm.longitude,
+        lat: @jamm.latitude
+      }
   end
 
   def create

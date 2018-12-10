@@ -9,7 +9,7 @@
     <div class="row">
       <h3 class="h3-tab-content-title">My skills</h3>
       <% if @skills.empty? %>
-        <p>You have to add at least one skill before using SoulJam</p>
+        <p style="color:red;">You have to add at least one skill before using SoulJam</p>
       <% end %>
       <p><%= link_to "Add a skill", new_skill_path %></p>
       <% @skills.each do |skill| %>
