@@ -8,6 +8,6 @@ class Jamm < ApplicationRecord
   validates :description, presence: true
   validates :location, presence: true
   validates :date, presence: true
-  validates :duration, presence: true, numericality: { only_integer: true }
-  validates :capacity, presence: true, numericality: { only_integer: true }
+  validates :duration, presence: true, numericality: { only_integer: true, greater_than: 0 }
+  validates :capacity, presence: true, numericality: { only_integer: true, greater_than: 0 }
 end

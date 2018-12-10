@@ -15,6 +15,7 @@ class JammsController < ApplicationController
   end
 
   def create
+    @instruments = Instrument.joins(:skills).where(skills: {user: current_user})
     @jamm = Jamm.new(jamm_params)
     @jamm.creator_id = current_user.id
     authorize @jamm
