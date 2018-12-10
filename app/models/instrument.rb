@@ -9,6 +9,7 @@ class Instrument < ApplicationRecord
 
 
   validates :name, presence: :true
+  validates :icon_url, presence: :true
   validates :category, inclusion: {
     in: CATEGORIES }
 
