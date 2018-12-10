@@ -31,6 +31,12 @@
           <div class="col-xs-12 col-sm-4">
             <%= render "pages/jamms_tab_card", jamm: jamm %>
           </div>
+          <% end %>
+          <h3 class="h3-tab-content-title">My Participations</h3>
+          <% @myparts.each do |jamm| %>
+          <div class="col-xs-12 col-sm-4">
+            <%= render "pages/jamms_tab_card", jamm: jamm %>
+          </div>
         <% end %>
       </div>
     </div>
