@@ -8,5 +8,6 @@ class PagesController < ApplicationController
     @skills = Skill.where(user: current_user)
     # @jamms = Jamm.joins(:participations).where(participations: {user: current_user})
     @jamms = Jamm.all.where(creator_id: current_user)
+    @myparts = Jamm.joins(:participations).where(participations: {user: current_user})
   end
 end

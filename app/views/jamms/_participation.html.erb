@@ -2,8 +2,7 @@
 <% user = participation.user %>
 
 <div id="participant-<%= user.id %>">
-  <p> <%= user.avatar %> </p>
-  <h5><%= user.username %></h5>
+  <h5><%= cl_image_tag user.avatar, height: 50, radius: 50 %> <%= user.username %></h5>
   <p>email: <%= user.email %> </p>
   <p>instrument: <%= participation.instrument.name %></p>
   <p>status: <%= participation.status %> </p>
