@@ -1,5 +1,6 @@
 
 require 'faker'
+
 Message.destroy_all
 Skill.destroy_all
 Jamm.destroy_all
