@@ -1,70 +1,115 @@
- <%= cl_image_tag @jamm.photo, class: "instrument-card1" %>
-    <div class="card-header">
-      <h3><%= @jamm.title %></h3>
-    </div>
-    <ul class="list-group list-group-flush">
-            <li class="list-group-item">
-              <%= @jamm.description %></li>
-             <li class="list-group-item">
-              <%= @jamm.location %></li>
-              <li class="list-group-item"><i class="fas fa-calendar-alt"></i><%= @jamm.date %></li>
-              <li class="list-group-item"><i class="fas fa-users"></i><%= @jamm.capacity %>
-              <% if @jamm.capacity == @jamm.participations.where(status: 'Accepted').size %>
-              <span style="color:red;"><strong> This jam is full </strong></span><% end %></li>
-              <li class="list-group-item"><i class="fas fa-clock"></i><%= @jamm.duration %> hr</li>
-              <li class="list-group-item">
-                <%= User.find(@jamm.creator_id).email %></li>
-                <% if policy(@jamm).edit? %>
-            <li class="list-group-item">
+<!--   <button class="tablinks" onclick="document.openJamtab(event, 'Profile')">Profile</button> -->
+<div class="tab">
+  <button class="tablinks" onclick="document.openJamtab(event, 'Jamming Session')" id="defaultOpen">Jamming Session</button>
+  <button class="tablinks" onclick="document.openJamtab(event, 'Participants')">Participants</button>
+  <button class="tablinks" onclick="document.openJamtab(event, 'Messages')">Messages</button>
+  <button class="tablinks" onclick="document.openJamtab(event, 'Reviews')">Reviews</button>
+</div>
+
+<div id="Jamming Session" class="tabcontent">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12 col-md-6">
+        <h3 class="h3-tab-content-title">Jamming session</h3>
+        <% if @jamm.photo? %>
+          <%= cl_image_tag @jamm.photo, class: "instrument-card2" %>
+        <% else %>
+          <%= cl_image_tag src="https://source.unsplash.com/collection/572418/free-concert-stock-photos", class: "instrument-card2" %>
+        <% end %>
+
+        <div class="card-header">
+           <h3><%= @jamm.title %></h3>
+        </div>
+
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><%= @jamm.description %></li>
+          <li class="list-group-item"><%= @jamm.location %></li>
+          <li class="list-group-item"><i class="fas fa-calendar-alt"></i><%= @jamm.date %></li>
+          <li class="list-group-item">
+            <i class="fas fa-users"></i>
+            <%= @jamm.capacity %>
+            <% if @jamm.capacity == @jamm.participations.where(status: 'Accepted').size %>
+              <span style="color:red;"><strong> This jam is full </strong></span>
+            <% end %>
+          </li>
+          <li class="list-group-item"><i class="fas fa-clock"></i><%= @jamm.duration %> hr</li>
+          <li class="list-group-item"><%= User.find(@jamm.creator_id).email %></li>
+          <li class="list-group-item">
+            <% if policy(@jamm).edit? %>
               <%= link_to "Edit", edit_jamm_path(@jamm) %>
             <% end %>
-          <% if policy(@jamm).destroy? %>
-            <%= link_to "Delete", jamm_path(@jamm), method: :delete,
-                data: { confirm: "Are you sure?" } %><% end %></li>
-       <li class="list-group-item">
-        <% if policy(@jamm).join? %>
-         <%= link_to "Join",  new_jamm_participation_path(@jamm), class: 'btn btn-primary' %><% end %>
-          <%= link_to "Send a message", new_jamm_message_path(@jamm), class: 'btn btn-primary' %>
-          <% if policy(@jamm).review? %>
-          <%= link_to "Review this jam", new_jamm_review_path(@jamm), class: 'btn btn-primary' %><% end %>
+
+            <% if policy(@jamm).destroy? %>
+              <%= link_to "Delete", jamm_path(@jamm), method: :delete,
+                data: { confirm: "Are you sure?" } %>
+            <% end %>
+          </li>
+          <li class="list-group-item">
+            <% if policy(@jamm).join? %>
+              <%= link_to "Join",  new_jamm_participation_path(@jamm), class: 'btn btn-primary' %>
+            <% end %>
+            <%= link_to "Send a message", new_jamm_message_path(@jamm), class: 'btn btn-primary' %>
+            <% if policy(@jamm).review? %>
+              <%= link_to "Review this jam", new_jamm_review_path(@jamm), class: 'btn btn-primary' %>
+            <% end %>
          </li>
+        </ul>
+      </div>
+
+      <div class="col-xs-12 col-md-6" style="position: sticky; top: 10px;">
          <div
             id="map"
-            style="width: 50%;
-            height: 600px;"
+            style="width: 100%;
+            height: calc(100vh - 20px);"
             data-markers="<%= @markers.to_json %>"
             data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-          ></div>
-         <li class="list-group-item">
-        <hr>
-        <h3>Participants</h3>
-        <div class="container">
-          <div class="row">
+            >
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="Participants" class="tabcontent">
+  <div class="container-fluid">
+    <div class="row">
+        <h3 class="h3-tab-content-title">Participants</h3>
             <% @jamm.participations.each do |participation| %>
               <div class="col-xs-4 col-sm-3 col-md-2">
                 <%= render 'jamms/participation', participation: participation %>
               </div>
             <% end %>
-          </div>
-        <hr> </li>
-        </div>
-        <h3>Messages</h3>
+    </div>
+  </div>
+</div>
+
+<div id="Messages" class="tabcontent">
+  <div class="container-fluid">
+    <div class="row">
+        <h3 class="h3-tab-content-title">Messages</h3>
         <% @messages.each do |message| %>
         <p><strong><%= message.user.username %></strong>, the <%= message.created_at %></p>
         <p><%= message.content %> <% if policy(message).destroy? %>
             <%= link_to "Delete", jamm_message_path(@jamm, message), method: :delete,
                 data: { confirm: "Are you sure?" } %><% end %></p>
         <% end %>
-        <h3>Reviews</h3>
+</div>
+  </div>
+    </div>
+
+<div id="Reviews" class="tabcontent">
+  <div class="container-fluid">
+    <div class="row">
+        <h3 class="h3-tab-content-title">Reviews</h3>
         <% @reviews.each do |review| %>
         <p><strong><%= review.title %></strong> <% if review.title.empty? %>Review</p><% end %>
         <p>by <%= review.participation.user.username %></p>
         <p><%= review.content %></p>
         <p><strong>Rating : </strong><%= review.rating %></p>
         <% end %>
-      </ul>
     </div>
   </div>
+</div>
 
 <div class="container container-sticky-right">
   <div class="hover">
