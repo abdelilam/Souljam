@@ -5,15 +5,14 @@
     placeholder: "Find a jam in your city"
   %>
 <% end %>
-<div class="container-fluid">
+<h3 class="h3-tab-content-title">All Jams</h3>
+<div class="container">
   <div class="row">
-    <h3 class="h3-tab-content-title">All Jams</h3>
       <% @jamms.each do |jamm| %>
-        <div class="col-xs-12 col-sm-4" style="padding: 50px;">
+        <div class="col-xs-12 col-sm-4">
           <%= render "pages/jamms_tab_card", jamm: jamm %>
         </div>
       <% end %>
-    </div>
   </div>
 </div>
 

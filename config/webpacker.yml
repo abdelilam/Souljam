@@ -49,7 +49,10 @@ development:
       'Access-Control-Allow-Origin': '*'
     watch_options:
       ignored: /node_modules/
-
+# {
+#   "application.js": "/packs/application-205ac6ab74e37f8d30ca.js",
+#   "application.js.map": "/packs/application-205ac6ab74e37f8d30ca.js.map"
+# }
 
 test:
   <<: *default
