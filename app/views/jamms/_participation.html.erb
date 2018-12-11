@@ -1,7 +1,7 @@
 <% user = participation.user %>
 
 <div>
-  <%= cl_image_tag user.avatar, height: 100, radius: 100, class: "participant", id: "participant-#{user.id}", "data-id": user.id %>
+  <%= cl_image_tag user.avatar, height: 100, radius: 100, crop: :thumb, class: "participant", id: "participant-#{user.id}", "data-id": user.id %>
   <i class= "<%= participation.status == 'Accepted' ? 'fa fa-check' : 'fas fa-times' %>" ></i>
   <p><%= cl_image_tag participation.instrument.icon_url %> <%= participation.instrument.name %></p>
   <% if policy(participation).destroy? %>
@@ -27,15 +27,7 @@
 <style>
   .participant-tooltip { display: none; }
   div.participant-tooltip-popper {background-color: #6BCDC1; border-radius: 5px; padding: 5px 5px; font-weight: bold; }
-    i.fa {
-     display: inline-block;
-     border-radius: 40px;
-     box-shadow: 0px 0px 2px #888;
-     padding: 0.5em 0.6em;
-     margin-left: -5px;
-     position: absolute;
-   }
-   i.fas {
+    i.fa-check {
      display: inline-block;
      border-radius: 40px;
      box-shadow: 0px 0px 2px #888;
@@ -44,6 +36,13 @@
      position: absolute;
    }
    i.fa-times {
+     display: inline-block;
+     border-radius: 40px;
+     box-shadow: 0px 0px 2px #888;
+     padding: 0.5em 0.6em;
+     margin-left: -5px;
+     position: absolute;
     color: red;
    }
+
 </style>
