@@ -52,6 +52,7 @@ class SkillsController < ApplicationController
     redirect_to dashboard_path
   end
 
+
   def skill_params
     params.require(:skill).permit(:level, :instrument_id)
   end
