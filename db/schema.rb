@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_10_152649) do
+ActiveRecord::Schema.define(version: 2018_12_11_092616) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,16 @@ ActiveRecord::Schema.define(version: 2018_12_10_152649) do
     t.index ["user_id"], name: "index_participations_on_user_id"
   end
 
+  create_table "reviews", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.integer "rating"
+    t.bigint "participation_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["participation_id"], name: "index_reviews_on_participation_id"
+  end
+
   create_table "skills", force: :cascade do |t|
     t.string "level"
     t.bigint "user_id"
@@ -92,6 +102,7 @@ ActiveRecord::Schema.define(version: 2018_12_10_152649) do
   add_foreign_key "participations", "instruments"
   add_foreign_key "participations", "jamms"
   add_foreign_key "participations", "users"
+  add_foreign_key "reviews", "participations"
   add_foreign_key "skills", "instruments"
   add_foreign_key "skills", "users"
 end
