@@ -43,6 +43,6 @@ class JammPolicy < ApplicationPolicy
   end
 
   def review?
-    record.participations.joins(:reviews).where(participations: { user: user }).empty? && record.date < Date.today && record.participations.where("user_id = ? AND status = ?", user.id, 'Accepted')
+    record.participations.joins(:reviews).where(participations: { user: user }).empty? && record.date < Date.today && !record.participations.where("user_id = ? AND status = ?", user.id, 'Accepted').empty?
   end
 end
