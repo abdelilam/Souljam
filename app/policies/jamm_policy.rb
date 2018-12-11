@@ -1,4 +1,5 @@
 class JammPolicy < ApplicationPolicy
+
   class Scope < Scope
     def resolve
       scope.where.not(creator_id: user)
@@ -37,7 +38,11 @@ class JammPolicy < ApplicationPolicy
     if user.nil?
       false
     else
-      record.creator_id != user.id && record.participations.where(user: user).empty? && record.capacity != record.participations.where(status: 'Accepted').size
+      record.creator_id != user.id && record.participations.where(user: user).empty? && record.capacity != record.participations.where(status: 'Accepted').size && record.date > Date.today
     end
+  end
+
+  def review?
+    record.participations.joins(:reviews).where(participations: { user: user }).empty? && record.date < Date.today && record.participations.where("user_id = ? AND status = ?", user.id, 'Accepted')
   end
 end
