@@ -17,9 +17,9 @@
             <%= link_to "See more", jamm_path(jamm) %></li>
             <li class="list-group-item">
             <i class="fas fa-calendar-alt"></i><%= jamm.date %>
-            <i class="fas fa-users"></i><%= jamm.capacity %>
-            <i class="fas fa-clock"></i><%= jamm.duration %>hr
-          </li>
+            <i class="fas fa-users"></i><%= jamm.capacity %> <% if jamm.capacity == jamm.participations.where(status: 'Accepted').size %>
+              <span style="color:red;"><strong> FULL </strong></span><% end %>
+            <i class="fas fa-clock"></i><%= jamm.duration %> hr</li>
             <li class="list-group-item">
             <%= User.find(jamm.creator_id).email.truncate(15) %>
               <%= link_to "See more", jamm_path(jamm) %></li>
