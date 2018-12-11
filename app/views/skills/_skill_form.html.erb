@@ -1,9 +1,22 @@
-<%= simple_form_for skill do |f| %>
-    # <%= f.input :instrument_id, collection: instruments.group_by(&:category), as: :grouped_select, group_method: :last, label_method: :name, value_method: :id, include_blank: false %>
+<h1 class="jams-new-h1"> Add your skill</h1>
+<div class="container jams-new">
+  <div class="row">
+    <div class="form-login2 margin-top">
+      <p>
+        <%= simple_form_for skill do |f| %>
+      </p>
+      <div class="form-inputs">
+     <%= f.input :instrument_id, collection: instruments.group_by(&:category), as: :grouped_select, group_method: :last, label_method: :name, value_method: :id, include_blank: false %>
     <div class="skills">
-      <p id="skill_level"> ## Skill Level ## </p>
+      <p id="skill_level"> Skill Level </p>
       <%= f.input :level, collection: ["Beginner", "Intermediate", "Expert"] %>
     </div>
-    <div id="f2submit"><%= f.submit "Submit" %><div>
-<% end %>
+      </div>
+      <div class="form-actions">
+      <p><%= f.submit "Submit", class: "btn btn-primary" %></p>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
 
