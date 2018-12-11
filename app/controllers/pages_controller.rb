@@ -8,7 +8,7 @@ class PagesController < ApplicationController
     @skills = Skill.where(user: current_user)
     # @jamms = Jamm.joins(:participations).where(participations: {user: current_user})
     @jamms = Jamm.all.where(creator_id: current_user)
-    @myparts = Jamm.joins(:participations).where(participations: {user: current_user, status: 'Accepted'})
+    @myparts = Jamm.all.where.not(creator_id: current_user).joins(:participations).where(participations: {user: current_user, status: 'Accepted'})
     @myapplications = Jamm.joins(:participations).where(participations: {user: current_user, status: 'Pending'})
   end
 end

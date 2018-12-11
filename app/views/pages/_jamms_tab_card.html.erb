@@ -29,9 +29,12 @@
               <%= link_to "Edit", edit_jamm_path(jamm) %>
             <% end %>
           <% if policy(jamm).destroy? %>
-            <%= link_to "Delete", jamm_path(jamm), method: :delete,
-                data: { confirm: "Are you sure?" } %>
-            <% end %></li>
+            <%= link_to "Delete", jamm_path(jamm), method: :delete, data: { confirm: "Are you sure?" } %>
+              <% end %>
+            </li>
+          <% if policy(jamm).review? %>
+            <li class="list-group-item"><%= link_to "Review this jam", new_jamm_review_path(jamm) %></li><% end %>
+
       </ul>
 
 </div>
