@@ -2,6 +2,7 @@
 
 <div>
   <%= cl_image_tag user.avatar, height: 100, radius: 100, class: "participant", id: "participant-#{user.id}", "data-id": user.id %>
+  <i class= "<%= participation.status == 'Accepted' ? 'fa fa-check' : 'fas fa-times' %>" ></i>
   <p><%= cl_image_tag participation.instrument.icon_url %> <%= participation.instrument.name %></p>
   <% if policy(participation).destroy? %>
     <%= link_to "Cancel my participation", jamm_participation_path(participation), method: :delete,
@@ -15,7 +16,9 @@
   <div class="participant-tooltip-popper">
     <div class="tippy-content">
       <p><%= user.username %></p>
+      <p>Using: <%= participation.instrument.name %></p>
       <p>Status: <%= participation.status %></p>
+      <span aria-hidden="true"> <i class= "<%= participation.status == 'Accepted' ? 'fa fa-check' : 'fas fa-times' %>" ></i></span>
     </div>
   </div>
 </div>
@@ -23,5 +26,24 @@
 
 <style>
   .participant-tooltip { display: none; }
-  .participant-tooltip-popper { color: white; }
+  div.participant-tooltip-popper {background-color: #6BCDC1; border-radius: 5px; padding: 5px 5px; font-weight: bold; }
+    i.fa {
+     display: inline-block;
+     border-radius: 40px;
+     box-shadow: 0px 0px 2px #888;
+     padding: 0.5em 0.6em;
+     margin-left: -5px;
+     position: absolute;
+   }
+   i.fas {
+     display: inline-block;
+     border-radius: 40px;
+     box-shadow: 0px 0px 2px #888;
+     padding: 0.5em 0.6em;
+     margin-left: -5px;
+     position: absolute;
+   }
+   i.fa-times {
+    color: red;
+   }
 </style>
