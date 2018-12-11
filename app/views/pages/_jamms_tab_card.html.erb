@@ -1,20 +1,25 @@
-
+<div class="jam-card-wrapper">
+<% if jamm.photo? %>
   <%= cl_image_tag jamm.photo, class: "instrument-card" %>
+  <% else %>
+  <%= cl_image_tag src="https://source.unsplash.com/collection/572418/free-concert-stock-photos", class: "instrument-card" %>
+  <% end %>
     <div class="card-header">
       <p><%= jamm.title %></p>
-        </div>
+    </div>
         <ul class="list-group list-group-flush">
             <li class="list-group-item">
             <%= jamm.description.truncate(27) %>
               <%= link_to "See more", jamm_path(jamm) %>
             </li>
-            <li class="list-group-item">
+          <li class="list-group-item">
             <%= jamm.location.truncate(20) %>
             <%= link_to "See more", jamm_path(jamm) %></li>
             <li class="list-group-item">
             <i class="fas fa-calendar-alt"></i><%= jamm.date %>
             <i class="fas fa-users"></i><%= jamm.capacity %>
-            <i class="fas fa-clock"></i><%= jamm.duration %> hr</li>
+            <i class="fas fa-clock"></i><%= jamm.duration %>hr
+          </li>
             <li class="list-group-item">
             <%= User.find(jamm.creator_id).email.truncate(15) %>
               <%= link_to "See more", jamm_path(jamm) %></li>
@@ -24,10 +29,12 @@
               <%= link_to "Edit", edit_jamm_path(jamm) %>
             <% end %>
           <% if policy(jamm).destroy? %>
-            <%= link_to "Delete", jamm_path(jamm), method: :delete,
-                data: { confirm: "Are you sure?" } %><% end %></li>
+            <%= link_to "Delete", jamm_path(jamm), method: :delete, data: { confirm: "Are you sure?" } %>
+              <% end %>
+            </li>
           <% if policy(jamm).review? %>
             <li class="list-group-item"><%= link_to "Review this jam", new_jamm_review_path(jamm) %></li><% end %>
-      </ul>
-</div>
 
+      </ul>
+
+</div>
