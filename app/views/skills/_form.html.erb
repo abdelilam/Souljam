@@ -1,0 +1,7 @@
+<%= simple_form_for skill do |f| %>
+  <%= f.input :instrument_id, collection: instruments.all.group_by(&:category), as: :grouped_select, group_method: :last, label_method: :name, value_method: :id, include_blank: false, selected: selected_instrument.id %>
+
+  <p> Skill Level </p>
+  <%= f.input :level, collection: ["Beginner", "Intermediate", "Expert"] %>
+  <%= f.submit action.capitalize, class: "btn btn-success" %>
+<% end %>

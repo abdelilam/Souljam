@@ -13,10 +13,11 @@ class SkillsController < ApplicationController
     @skill.user = current_user
     authorize @skill
     @instruments = Instrument.all
+
     if @skill.save
       redirect_to dashboard_path
     else
-      render :new
+      redirect_to dashboard_path
     end
   end
 

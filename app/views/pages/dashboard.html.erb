@@ -12,10 +12,14 @@
       <% if @skills.empty? %>
         <p style="color:red;">You have to add at least one skill before using SoulJam</p>
       <% end %>
-      <p><%= link_to "Add a skill", new_skill_path %></p>
+
+      <p><%= link_to "Add a skill", new_skill_path, "data-toggle": "modal",  "data-target": "#newSkillModal" %></p>
+
       <% @skills.each do |skill| %>
         <div class="col-xs-12 col-sm-4">
           <%= render "pages/instruments_tab_card", skill: skill %>
+          <%= render "skills/new_skill_modal" %>
+          <%= render "skills/edit_skill_modal", skill: skill %>
         </div>
       <% end %>
 </div>
@@ -58,11 +62,6 @@
       </div>
   </div>
 
-<!-- <div id="Profile" class="tabcontent">
-  <h3>Profile</h3>
-  <p>Once built profile page here</p>
-</div>
- -->
 <div class="container container-sticky-right">
   <div class="hover">
     <span>Jam Toolbar</span>
@@ -79,3 +78,5 @@
     <% end %>
   </div>
 </div>
+
+
