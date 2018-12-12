@@ -17,7 +17,7 @@ class ParticipationPolicy < ApplicationPolicy
     if user.nil?
       false
     else
-      is_user? && record.jamm.creator_id != user.id
+      is_user? && record.jamm.creator_id != user.id && record.jamm.date > Date.today
     end
   end
 

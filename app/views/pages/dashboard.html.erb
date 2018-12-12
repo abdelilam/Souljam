@@ -1,6 +1,7 @@
 <div class="tab">
   <button class="tablinks" onclick="document.openJamtab(event, 'My skills')" id="defaultOpen">My skills</button>
   <button class="tablinks" onclick="document.openJamtab(event, 'Hosting')">Hosting</button>
+  <button class="tablinks" onclick="document.openJamtab(event, 'Participations')">Participations</button>
   <button class="tablinks" onclick="document.openJamtab(event, 'Pending')">Pending</button>
 <!--   <button class="tablinks" onclick="document.openJamtab(event, 'Profile')">Profile</button> -->
 </div>
@@ -14,6 +15,9 @@
       <% end %>
 
       <p><%= link_to "Add a skill", new_jamm_path, "data-toggle": "modal",  "data-target": "#newSkillModal" %></p>
+
+      <button class="btn btn-success" data-toggle="modal" data-target="#newSkillModal">Add a Skill</button>
+
       <%= render "skills/new_skill_modal" %>
 
       <% @skills.each do |skill| %>
@@ -41,7 +45,14 @@
 
           </div>
           <% end %>
+          </div>
+      </div>
+    </div>
 
+        <div id="Participations" class="tabcontent">
+        <div class="container-fluid">
+         <div class="row">
+          <h3 class="h3-tab-content-title">Participations</h3>
           <% @myparts.each do |jamm| %>
           <div class="col-xs-12 col-sm-4">
             <%= render "pages/jamms_tab_card", jamm: jamm %>
