@@ -1,0 +1,25 @@
+<h1 class="jams-new-h1">Create your Jam</h1>
+<div class="container jams-new">
+  <div class="row">
+    <div class="col-xs-12 col-md-6 col-sm-offset-3">
+      <div class="form-login2 margin-top">
+<p><%= simple_form_for @jamm do |f| %></p>
+
+     <p><%= f.input :title %></p>
+     <p><%= f.input :description %></p>
+     <p><%= f.input :location %></p>
+     <p><%= f.input :date, as: :date, html5: true %></p>
+     <p><%= f.input :capacity %></p>
+     <p><%= f.input :duration %></p>
+     <p><%= f.input :instruments, collection: @instruments.group_by(&:category), as: :grouped_select, group_method: :last, label_method: :name, value_method: :id, include_blank: false %></p>
+     <p><%= f.input :photo %></p>
+     <p><%= f.input :photo_cache, as: :hidden %></p>
+
+     <p><%= f.submit "Create a jam session", class: "btn btn-primary"%></p>
+
+   <!--   <p>I NEED THIS PARAGRAPH TO MAKE THE SUBMIT BUTTON SHOWN</p> -->
+     <% end %>
+</div>
+</div>
+</div>
+
