@@ -14,10 +14,14 @@
         <p style="color:red;">You have to add at least one skill before using SoulJam</p>
       <% end %>
 
+      <p><%= link_to "Add a skill", new_jamm_path, "data-toggle": "modal",  "data-target": "#newSkillModal" %></p>
+
       <button class="btn btn-success" data-toggle="modal" data-target="#newSkillModal">Add a Skill</button>
+
       <%= render "skills/new_skill_modal" %>
 
       <% @skills.each do |skill| %>
+
         <div class="col-xs-12 col-sm-4">
           <%= render "pages/instruments_tab_card", skill: skill %>
           <%= render "skills/edit_skill_modal", skill: skill %>
@@ -36,6 +40,9 @@
             <% @jamms.each do |jamm| %>
           <div class="col-xs-12 col-sm-4">
             <%= render "pages/jamms_tab_card", jamm: jamm %>
+            <%= render "jamms/new_jam_modal" %>
+
+
           </div>
           <% end %>
           </div>
