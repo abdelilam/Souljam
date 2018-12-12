@@ -1,5 +1,6 @@
 class JammsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
+
   def index
     if params[:query].present?
       @jamms = policy_scope(Jamm).where("location ILIKE ?", "%#{params[:query]}%")

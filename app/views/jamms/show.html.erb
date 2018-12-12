@@ -102,10 +102,10 @@
     <div class="row">
         <h3 class="h3-tab-content-title">Reviews</h3>
         <% @reviews.each do |review| %>
-        <p><strong><%= review.title %></strong> <% if review.title.empty? %>Review</p><% end %>
+        <p><strong><%= review.title %></strong><% if review.title.empty? %><strong>Review</strong></p><% end %>
         <p>by <%= review.participation.user.username %></p>
         <p><%= review.content %></p>
-        <p><strong>Rating : </strong><%= review.rating %></p>
+        <p><strong>Rating : </strong><%= review.rating %>/5</p><br>
         <% end %>
     </div>
   </div>
