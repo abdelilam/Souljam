@@ -12,6 +12,7 @@
 }
 .navbar-home {
   background: transparent;
+  // rgba(196, 196, 196, 0.4)
   box-shadow: none;
   position: absolute;
   width: 100%;
@@ -54,6 +55,7 @@
 .navbar-wagon-link:hover {
   color: #da552f;
   text-decoration: none;
+  padding-top: 0;
 }
 
 /* Dropdown menu */
