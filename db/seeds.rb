@@ -73,68 +73,68 @@ end
 
 
 # USER
-50.times do |n|
-  user = User.create!(
-    username: Faker::Name.middle_name,
-    first_name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name,
-    avatar: Faker::Avatar.image,
-    email: Faker::Internet.email,
-    password: '123456'
-  )
+#50.times do |n|
+#  user = User.create!(
+#   username: Faker::Name.middle_name,
+#   first_name: Faker::Name.first_name,
+#   last_name: Faker::Name.last_name,
+#   avatar: Faker::Avatar.image,
+#   email: Faker::Internet.email,
+#   password: '123456'
+# )
 
-  instrument = nil
-  rand(1..3).times do
-    insts.delete(instrument)
-    instrument = insts.sample[0]
-    Skill.create(
-      user: user,
-      instrument: instrument,
-      level: levels.sample[0]
-    )
-  end
+# instrument = nil
+#  rand(1..3).times do
+#    insts.delete(instrument)
+#    instrument = insts.sample[0]
+#    Skill.create(
+#      user: user,
+#      instrument: instrument,
+#      level: levels.sample[0]
+#   )
+#  end
 
-  puts "User ##{n} done!"
-  puts "\n"
-end
+#  puts "User ##{n} done!"
+#  puts "\n"
+#end
 
 
 # JAMMS
 
 
-  jam = []
+#  jam = []
 
-20.times do |n|
-  capacity = rand(2..10)
+#20.times do |n|
+#  capacity = rand(2..10)
 
-  jamm = Jamm.create!(
-    title: titles.sample,
-    description: descriptions.sample,
-    location: addresses.sample,
-    date: Faker::Date.forward(30),
-    duration: rand(1..3),
-    capacity: capacity,
-    creator: User.all.sample
-  )
-     jam << jamm
+#  jamm = Jamm.create!(
+#    title: titles.sample,
+#    description: descriptions.sample,
+#    location: addresses.sample,
+#    date: Faker::Date.forward(30),
+#    duration: rand(1..3),
+#    capacity: capacity,
+#    creator: User.all.sample
+#  )
+#     jam << jamm
 
-  statu =  ["accepted", "pending", "declined"]
+#  statu =  ["accepted", "pending", "declined"]
 
-  user = nil
+#  user = nil
 
-  capacity.times do
+#  capacity.times do
 
-    jam.delete(user)
-    user = jam.sample[0]
-    Participation.create(
-      jamm: jamm,
-      user: user,
-      status: statu.sample[0]
-    )
-  end
+ #   jam.delete(user)
+ #   user = jam.sample[0]
+  #  Participation.create(
+   #   jamm: jamm,
+    #  user: user,
+     # status: statu.sample[0]
+    #)
+  #end
 
-  puts "Jamm ##{n} done!"
-  puts "\n"
-end
+  #puts "Jamm ##{n} done!"
+  #puts "\n"
+#end
 
 
