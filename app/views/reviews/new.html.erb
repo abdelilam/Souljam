@@ -7,7 +7,7 @@
       <div class="form-inputs">
       <p><%= f.input :title %></p>
       <p><%= f.input :content %></p>
-      <p><%= f.input :rating %></p>
+      <p><%= f.input :rating, label: "Rating between 0 and 5" %></p>
       <div class="form-actions">
       <p><%= f.submit "Send", class: "btn btn-primary"%></p>
       </div>

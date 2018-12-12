@@ -26,7 +26,7 @@ class JammPolicy < ApplicationPolicy
     if user.nil?
       false
     else
-      record.creator_id == user.id
+      record.creator_id == user.id && record.date > Date.today
     end
   end
 
