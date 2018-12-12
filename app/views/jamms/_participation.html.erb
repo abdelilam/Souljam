@@ -3,7 +3,7 @@
 <div>
   <%= cl_image_tag user.avatar, height: 100, radius: 100, crop: :thumb, class: "participant", id: "participant-#{user.id}", "data-id": user.id %>
   <i class= "<%= participation.status == 'Accepted' ? 'fa fa-check' : 'fas fa-times' %>" ></i>
-  <p><%= cl_image_tag participation.instrument.icon_url %> <%= participation.instrument.name %></p>
+  <p><%= cl_image_tag participation.instrument.icon_url, height: 50, width: 50 %> <%= participation.instrument.name %></p>
   <% if policy(participation).destroy? %>
     <%= link_to "Cancel my participation", jamm_participation_path(participation), method: :delete,
     data: { confirm: "Are you sure ?"} %>

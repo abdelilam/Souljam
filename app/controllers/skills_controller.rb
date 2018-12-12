@@ -13,10 +13,11 @@ class SkillsController < ApplicationController
     @skill.user = current_user
     authorize @skill
     @instruments = Instrument.all
+
     if @skill.save
       redirect_to dashboard_path
     else
-      render :new
+      redirect_to dashboard_path
     end
   end
 
@@ -51,6 +52,7 @@ class SkillsController < ApplicationController
     flash[:notice] = "#{@skill.instrument.name} is successfuly deleted"
     redirect_to dashboard_path
   end
+
 
   def skill_params
     params.require(:skill).permit(:level, :instrument_id)

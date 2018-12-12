@@ -1,48 +1,58 @@
 <div class="tab">
-  <button class="tablinks" onclick="document.openJamtab(event, 'Instruments')" id="defaultOpen">My skills</button>
-  <button class="tablinks" onclick="document.openJamtab(event, 'Sessions')">My Jams</button>
+  <button class="tablinks" onclick="document.openJamtab(event, 'My skills')" id="defaultOpen">My skills</button>
+  <button class="tablinks" onclick="document.openJamtab(event, 'Hosting')">Hosting</button>
+  <button class="tablinks" onclick="document.openJamtab(event, 'Pending')">Pending</button>
 <!--   <button class="tablinks" onclick="document.openJamtab(event, 'Profile')">Profile</button> -->
 </div>
 
-<div id="Instruments" class="tabcontent">
+<div id="My skills" class="tabcontent">
   <div class="container-fluid">
     <div class="row">
       <h3 class="h3-tab-content-title">My skills</h3>
       <% if @skills.empty? %>
         <p style="color:red;">You have to add at least one skill before using SoulJam</p>
       <% end %>
-      <p><%= link_to "Add a skill", new_skill_path %></p>
+
+      <p><%= link_to "Add a skill", new_skill_path, "data-toggle": "modal",  "data-target": "#newSkillModal" %></p>
+
       <% @skills.each do |skill| %>
         <div class="col-xs-12 col-sm-4">
           <%= render "pages/instruments_tab_card", skill: skill %>
+          <%= render "skills/new_skill_modal" %>
+          <%= render "skills/edit_skill_modal", skill: skill %>
         </div>
       <% end %>
 </div>
-</div>
-</div>
+  </div>
+    </div>
 
+     <div id="Hosting" class="tabcontent">
+         <div class="container-fluid">
+            <div class="row">
+            <h3 class="h3-tab-content-title">Hosting</h3>
+            <p><%= link_to "Create a jam session", new_jamm_path %></p>
 
-<div id="Sessions" class="tabcontent">
-  <div class="container-fluid">
-    <div class="row">
-      <h3 class="h3-tab-content-title">My Jams</h3>
-      <p><%= link_to "Create a jam session", new_jamm_path %></p>
-        <% @jamms.each do |jamm| %>
+            <% @jamms.each do |jamm| %>
           <div class="col-xs-12 col-sm-4">
             <%= render "pages/jamms_tab_card", jamm: jamm %>
           </div>
           <% end %>
-          </div>
-          <div class="row">
-          <h3 class="h3-tab-content-title">My Participations</h3>
+
           <% @myparts.each do |jamm| %>
           <div class="col-xs-12 col-sm-4">
             <%= render "pages/jamms_tab_card", jamm: jamm %>
           </div>
-        <% end %>
-        </div>
-        <div class="row">
-        <h3 class="h3-tab-content-title">My Applications</h3>
+            <% end %>
+       </div>
+      </div>
+    </div>
+
+
+
+       <div id="Pending" class="tabcontent">
+        <div class="container-fluid">
+         <div class="row">
+        <h3 class="h3-tab-content-title">Pending</h3>
           <% @myapplications.each do |jamm| %>
           <div class="col-xs-12 col-sm-4">
             <%= render "pages/jamms_tab_card", jamm: jamm %>
@@ -52,11 +62,6 @@
       </div>
   </div>
 
-<!-- <div id="Profile" class="tabcontent">
-  <h3>Profile</h3>
-  <p>Once built profile page here</p>
-</div>
- -->
 <div class="container container-sticky-right">
   <div class="hover">
     <span>Jam Toolbar</span>
@@ -73,3 +78,5 @@
     <% end %>
   </div>
 </div>
+
+

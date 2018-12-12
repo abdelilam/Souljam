@@ -1,8 +1,8 @@
 <div class="jam-card-wrapper">
 <% if jamm.photo? %>
-  <%= cl_image_tag jamm.photo, class: "instrument-card" %>
+  <%= cl_image_tag jamm.photo, class: "instrument-card1" %>
   <% else %>
-  <%= cl_image_tag src="https://source.unsplash.com/collection/572418/free-concert-stock-photos", class: "instrument-card" %>
+  <%= cl_image_tag src="https://source.unsplash.com/collection/572418/free-concert-stock-photos", class: "instrument-card1" %>
   <% end %>
     <div class="card-header">
       <p><%= jamm.title %></p>

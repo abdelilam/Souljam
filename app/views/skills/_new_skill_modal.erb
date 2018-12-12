@@ -1,0 +1,17 @@
+<div class="modal fade" id="newSkillModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="newSkillModal">Add skill</h4>
+      </div>
+
+      <div class="modal-body">
+        <%= render "skills/form", skill: Skill.new, instruments: Instrument.all, action: "Add", selected_instrument: Instrument.first %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
