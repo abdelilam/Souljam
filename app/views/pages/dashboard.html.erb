@@ -9,13 +9,15 @@
 <div id="My skills" class="tabcontent">
   <div class="container-fluid">
     <div class="row">
-      <h3 class="h3-tab-content-title">My skills</h3>
       <button class="btn btn-success" data-toggle="modal" data-target="#newSkillModal">Add a Skill</button>
+      <h3 class="h3-tab-content-title">My skills</h3>
+
       <% if @skills.empty? %>
         <p style="color:red;">You have to add at least one skill before using SoulJam</p>
       <% end %>
 
       <%= render "skills/new_skill_modal" %>
+
 
       <% @skills.each do |skill| %>
 
@@ -31,8 +33,10 @@
      <div id="Hosting" class="tabcontent">
          <div class="container-fluid">
             <div class="row">
+           <%= link_to "Create a Jam", new_jamm_path, class:"btn btn-success"%>
+
             <h3 class="h3-tab-content-title">Hosting</h3>
-            <h3><%= link_to "Create a jam", new_jamm_path, class:"btn btn-success"%></h3>
+
 
             <% @jamms.each do |jamm| %>
           <div class="col-xs-12 col-sm-4">

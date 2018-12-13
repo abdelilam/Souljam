@@ -10,7 +10,7 @@
      <p><%= f.input :location %></p>
      <p><%= f.input :date, as: :date, html5: true %></p>
      <p><%= f.input :capacity, input_html: { min: '0', step: 'any' }%></p>
-     <p><%= f.input :duration %></p>
+     <p><%= f.input :duration, input_html: { min: '0', step: 'any' } %></p>
      <p><%= f.input :instruments, collection: @instruments.group_by(&:category), as: :grouped_select, group_method: :last, label_method: :name, value_method: :id, include_blank: false %></p>
      <p><%= f.input :photo %></p>
      <p><%= f.input :photo_cache, as: :hidden %></p>
