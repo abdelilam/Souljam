@@ -46,9 +46,12 @@
           </li>
           <li class="list-group-item">
             <% if policy(@jamm).join? %>
-              <%= link_to "Join",  new_jamm_participation_path(@jamm), class: 'btn btn-primary' %>
+            <button class="btn btn-success" data-toggle="modal" data-target="#newJoinModal">Join</button>
+              <%= render "participations/new_join_modal" %>
+
             <% end %>
-            <%= link_to "Send a message", new_jamm_message_path(@jamm), class: 'btn btn-primary' %>
+            <button class="btn btn-success" data-toggle="modal" data-target="#newMessageModal">Send a message</button>
+            <%= render "messages/new_message_modal" %>
             <% if policy(@jamm).review? %>
               <%= link_to "Review this jam", new_jamm_review_path(@jamm), class: 'btn btn-primary' %>
             <% end %>
