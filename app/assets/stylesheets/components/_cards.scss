@@ -4,7 +4,7 @@
 }
 .card-header {
   padding-bottom: 5px;
-  padding-top: 15px;
+  padding-top: 3px;
   background-color: #E5E5E5;
   padding-left: 15px;
   color: black;
@@ -22,7 +22,7 @@
 .h3-tab-content-title {
   color: black;
   margin-bottom: 30px;
-  margin-left: 50px;
+  margin-left: 5px;
 }
 .list-group-item:last-child {
   margin-bottom: 80px;
@@ -45,19 +45,23 @@
 }
 
 .instrument-card1 {
-    height: 200px;
+    height: 300px;
     display: block;
-    border-radius: 20%;
+    border-radius: 5%;
     margin: 10px auto;
 }
 
 .instrument-card2 {
-    height: 200px;
-    border-radius: 20%;
+    height: 300px;
+    width: 100%;
+    border-radius: 5%;
     margin: 10px auto;
 
 }
-
+.instrument-card-h3 {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
 
 
 .jam-card-wrapper {
