@@ -1,0 +1,4 @@
+ <%= simple_form_for [@jamm, @participation] do |f| %>
+        <%= f.input :instrument, collection: @instruments.group_by(&:category), as: :grouped_select, group_method: :last, label_method: :name, value_method: :id, include_blank: false %>
+    <%= f.submit "Add", class: "btn btn-success" %>
+<% end %>

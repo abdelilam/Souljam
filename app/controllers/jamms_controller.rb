@@ -15,10 +15,12 @@ class JammsController < ApplicationController
   end
 
   def show
+    @participation = Participation.new
     @jamm = Jamm.find(params[:id])
     authorize @jamm
     @messages = Message.all.where(jamm_id: @jamm.id)
     @reviews = Review.joins(:participation).where(participations: { jamm_id: @jamm.id })
+    @instruments = Instrument.joins(:skills).where(skills: {user: current_user})
 
     @markers =
       {

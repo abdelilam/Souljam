@@ -1,8 +1,13 @@
 <div class="jam-card-wrapper">
 <% if jamm.photo? %>
+<%= link_to jamm_path(jamm) do %>
   <%= cl_image_tag jamm.photo, class: "instrument-card1" %>
+     <% end %>
   <% else %>
-  <%= cl_image_tag src="https://source.unsplash.com/collection/572418/free-concert-stock-photos", class: "instrument-card1" %>
+  <%= link_to jamm_path(jamm) do %>
+    <%= cl_image_tag src="https://source.unsplash.com/collection/572418/free-concert-stock-photos", class: "instrument-card1" %>
+  <% end %>
+     </li>
   <% end %>
     <div class="card-header">
       <p><%= jamm.title %></p>
@@ -10,11 +15,11 @@
         <ul class="list-group list-group-flush">
             <li class="list-group-item">
             <%= jamm.description.truncate(27) %>
-              <%= link_to "See more", jamm_path(jamm) %>
+
             </li>
           <li class="list-group-item">
             <%= jamm.location.truncate(20) %>
-            <%= link_to "See more", jamm_path(jamm) %></li>
+
             <li class="list-group-item">
             <i class="fas fa-calendar-alt"></i><%= jamm.date %>
             <i class="fas fa-users"></i><%= jamm.capacity %> <% if jamm.capacity == jamm.participations.where(status: 'Accepted').size %>
@@ -22,7 +27,6 @@
             <i class="fas fa-clock"></i><%= jamm.duration %> hr</li>
             <li class="list-group-item">
             <%= User.find(jamm.creator_id).email.truncate(15) %>
-              <%= link_to "See more", jamm_path(jamm) %></li>
             </li>
             <% if policy(jamm).edit? %>
             <li class="list-group-item">

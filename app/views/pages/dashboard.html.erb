@@ -10,12 +10,10 @@
   <div class="container-fluid">
     <div class="row">
       <h3 class="h3-tab-content-title">My skills</h3>
+      <button class="btn btn-success" data-toggle="modal" data-target="#newSkillModal">Add a Skill</button>
       <% if @skills.empty? %>
         <p style="color:red;">You have to add at least one skill before using SoulJam</p>
       <% end %>
-
-
-      <button class="btn btn-success" data-toggle="modal" data-target="#newSkillModal">Add a Skill</button>
 
       <%= render "skills/new_skill_modal" %>
 
@@ -34,14 +32,11 @@
          <div class="container-fluid">
             <div class="row">
             <h3 class="h3-tab-content-title">Hosting</h3>
-            <p><%= link_to "Create a jam session", new_jamm_path %></p>
+            <h3><%= link_to "Create a jam", new_jamm_path, class:"btn btn-success"%></h3>
 
             <% @jamms.each do |jamm| %>
           <div class="col-xs-12 col-sm-4">
             <%= render "pages/jamms_tab_card", jamm: jamm %>
-
-
-
           </div>
           <% end %>
           </div>
@@ -60,8 +55,6 @@
        </div>
       </div>
     </div>
-
-
 
        <div id="Pending" class="tabcontent">
         <div class="container-fluid">
