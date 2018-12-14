@@ -1,44 +1,47 @@
 <div class="jam-card-wrapper">
-<% if jamm.photo? %>
-<%= link_to jamm_path(jamm) do %>
-  <%= cl_image_tag jamm.photo, class: "instrument-card4" %>
-     <% end %>
-  <% else %>
-  <%= link_to jamm_path(jamm) do %>
-    <%= cl_image_tag src="https://source.unsplash.com/collection/572418/free-concert-stock-photos", class: "instrument-card4" %>
-  <% end %>
-     </li>
-  <% end %>
+  <%= link_to jamm_path(jamm), style: "text-decoration: none;" do %>
+    <% if jamm.photo? %>
+      <div style="background: url(<%= cl_image_path jamm.photo %>) no-repeat center center; background-size: cover;" class="instrument-card4"></div>
+    <% else %>
+      <div style="background: url(https://source.unsplash.com/collection/572418/free-concert-stock-photos) no-repeat center center; background-size: cover;" class="instrument-card4"></div>
+    <% end %>
+
     <div class="card-header">
-      <p><%= jamm.title %></p>
+      <p><%= jamm.title.truncate(40) %></p>
     </div>
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item">
-            <%= jamm.description.truncate(27) %>
 
-            </li>
-          <li class="list-group-item">
-            <%= jamm.location.truncate(20) %>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        <%= jamm.description.truncate(60) %>
+      </li>
 
-            <li class="list-group-item">
-            <i class="fas fa-calendar-alt"></i><%= jamm.date %>
-            <i class="fas fa-users"></i><%= jamm.capacity %> <% if jamm.capacity == jamm.participations.where(status: 'Accepted').size %>
-              <span style="color:red;"><strong> FULL </strong></span><% end %>
-            <i class="fas fa-clock"></i><%= jamm.duration %> hr</li>
-            <li class="list-group-item">
-            <%= User.find(jamm.creator_id).email.truncate(15) %>
-            </li>
-            <% if policy(jamm).edit? %>
-            <li class="list-group-item">
-              <%= link_to "Edit", edit_jamm_path(jamm) %>
-            <% end %>
-          <% if policy(jamm).destroy? %>
-            <%= link_to "Delete", jamm_path(jamm), method: :delete, data: { confirm: "Are you sure?" } %>
-              <% end %>
-            </li>
-          <% if policy(jamm).review? %>
-            <li class="list-group-item"><%= link_to "Review this jam", new_jamm_review_path(jamm) %></li><% end %>
+      <li class="list-group-item">
+        <%= jamm.location.truncate(20) %>
+      </li>
 
-      </ul>
+      <li class="list-group-item">
+        <i class="fas fa-calendar-alt"></i><%= jamm.date %>
+        <i class="fas fa-users"></i><%= jamm.capacity %> <% if jamm.capacity == jamm.participations.where(status: 'Accepted').size %>
+          <span style="color:red;"><strong> FULL </strong></span><% end %>
+        <i class="fas fa-clock"></i><%= jamm.duration %> hr
+      </li>
 
+      <li class="list-group-item" style="display: flex; align-items: center;">
+        <div style="background: url(<%= cl_image_path User.find(jamm.creator_id).avatar %>) no-repeat center top; background-size: cover; width: 40px; height: 40px; border-radius: 50%;"></div>
+        <%= User.find(jamm.creator_id).username %>
+      </li>
+
+      <% if policy(jamm).destroy? %>
+        <li class="list-group-item">
+          <%= link_to "Edit", edit_jamm_path(jamm) %>
+          <%= link_to "Delete", jamm_path(jamm), method: :delete, data: { confirm: "Are you sure?" } %>
+        </li>
+      <% end %>
+
+      <% if policy(jamm).review? %>
+        <li class="list-group-item"><%= link_to "Review this jam", new_jamm_review_path(jamm) %></li>
+      <% end %>
+
+    </ul>
+  <% end %>
 </div>
