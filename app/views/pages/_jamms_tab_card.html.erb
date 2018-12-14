@@ -27,8 +27,9 @@
       </li>
 
       <li class="list-group-item" style="display: flex; align-items: center;">
+         Created by:  <%=  User.find(jamm.creator_id).username.capitalize %>
         <div style="background: url(<%= cl_image_path User.find(jamm.creator_id).avatar %>) no-repeat center top; background-size: cover; width: 40px; height: 40px; border-radius: 50%;"></div>
-        <%= User.find(jamm.creator_id).username %>
+
       </li>
 
       <% if policy(jamm).destroy? %>
