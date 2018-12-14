@@ -7,7 +7,7 @@
   padding-top: 3px;
   background-color: #E5E5E5;
   padding-left: 15px;
-  color: black;
+  color: #100444;
   font-weight: bolder;
 }
 .list-group-item {
@@ -20,9 +20,12 @@
   }
 }
 .h3-tab-content-title {
-  color: black;
+  color: #100444;
   margin-bottom: 30px;
   margin-left: 5px;
+}
+.margin-left5pc {
+  margin-left: 5% !important;
 }
 .list-group-item:last-child {
   margin-bottom: 80px;
