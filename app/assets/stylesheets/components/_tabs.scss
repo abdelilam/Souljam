@@ -2,6 +2,7 @@
     overflow: hidden;
     border: 1px solid #ccc;
     background-color: #9c95bf;
+    font-family: "offside";
 }
 
 .tab button {
@@ -12,9 +13,11 @@
     cursor: pointer;
     padding: 14px 16px;
     transition: 0.3s;
+    font-family: "offside";
 }
 .tab button.tablinks {
   color: white;
+  font-family: "offside";
 }
 .tab button:hover {
     background-color: #ddd;

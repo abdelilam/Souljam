@@ -3,12 +3,13 @@
   width: 100%;
 }
 .card-header {
-  padding-bottom: 5px;
-  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-top: 10px;
   background-color: #E5E5E5;
   padding-left: 15px;
   color: #100444;
   font-weight: bolder;
+  font-family: "offside";
 }
 .list-group-item {
   color: black;
@@ -23,9 +24,11 @@
   color: #100444;
   margin-bottom: 30px;
   margin-left: 5px;
+  font-family: "offside";
 }
 .margin-left5pc {
   margin-left: 5% !important;
+  font-family: "offside";
 }
 .list-group-item:last-child {
   margin-bottom: 80px;
