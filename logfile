@@ -1,0 +1,22 @@
+2021-04-13 16:57:59.261 EDT [29621] LOG:  starting PostgreSQL 13.2 on x86_64-apple-darwin17.7.0, compiled by Apple LLVM version 9.0.0 (clang-900.0.39.2), 64-bit
+2021-04-13 16:57:59.263 EDT [29621] LOG:  listening on IPv6 address "::1", port 5432
+2021-04-13 16:57:59.263 EDT [29621] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2021-04-13 16:57:59.263 EDT [29621] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2021-04-13 16:57:59.267 EDT [29622] LOG:  database system was shut down at 2021-04-13 16:57:38 EDT
+2021-04-13 16:57:59.301 EDT [29621] LOG:  database system is ready to accept connections
+2021-04-13 17:00:34.706 EDT [29720] FATAL:  database "Souljam_development" does not exist
+2021-04-14 08:23:01.066 EDT [29626] LOG:  using stale statistics instead of current ones because stats collector is not responding
+2021-04-14 08:23:13.754 EDT [29626] LOG:  using stale statistics instead of current ones because stats collector is not responding
+2021-04-14 08:23:18.084 EDT [29992] LOG:  using stale statistics instead of current ones because stats collector is not responding
+2021-04-14 08:23:25.032 EDT [29626] LOG:  using stale statistics instead of current ones because stats collector is not responding
+2021-04-14 11:18:29.750 EDT [34280] LOG:  using stale statistics instead of current ones because stats collector is not responding
+2021-04-14 11:18:53.310 EDT [29626] LOG:  using stale statistics instead of current ones because stats collector is not responding
+2021-04-15 11:06:29.338 EDT [41022] LOG:  using stale statistics instead of current ones because stats collector is not responding
+2021-04-15 11:07:01.418 EDT [41046] LOG:  using stale statistics instead of current ones because stats collector is not responding
+2021-04-15 13:30:04.063 EDT [29626] LOG:  using stale statistics instead of current ones because stats collector is not responding
+2021-04-15 14:27:05.547 EDT [46322] LOG:  using stale statistics instead of current ones because stats collector is not responding
+2021-04-15 14:27:33.024 EDT [29626] LOG:  using stale statistics instead of current ones because stats collector is not responding
+2021-04-15 14:28:01.220 EDT [46367] LOG:  using stale statistics instead of current ones because stats collector is not responding
+2021-04-15 16:54:33.229 EDT [29621] LOG:  received smart shutdown request
+2021-04-15 16:54:33.301 EDT [29621] LOG:  background worker "logical replication launcher" (PID 29628) exited with exit code 1
+2021-04-15 16:54:33.302 EDT [29623] LOG:  shutting down
